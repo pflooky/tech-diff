@@ -1,3 +1,8 @@
+let prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+let html = document.querySelector('html');
+
+html.classList.add(prefers);
+
 document$.subscribe(function() {
     const tables = document.querySelectorAll("table");
     tables.forEach(function(table) {
