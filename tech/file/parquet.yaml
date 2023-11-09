@@ -1,0 +1,50 @@
+name: Apache Parquet
+description: Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval.
+logo: assets/logo/parquet.svg
+license: Apache license 2.0
+source_code: https://github.com/apache/parquet-format
+website: https://parquet.apache.org/
+year_created: 2013
+company:
+  - Twitter
+  - Cloudera
+language_support:
+  - java
+  - scala
+  - c++
+  - python
+  - r
+  - php
+use_cases:
+  - Write once read many
+  - Analytics
+  - Efficient storage
+  - Column based queries
+file:
+  is_human_readable:
+    value: false
+    source: https://parquet.apache.org/docs/file-format/
+  orientation:
+    value: column
+    source: https://github.com/apache/parquet-format/blob/master/README.md
+  has_type_system:
+    value: true
+    source: https://github.com/apache/parquet-format/blob/master/LogicalTypes.md
+  has_nested_structure_support:
+    value: true
+    source: https://github.com/apache/parquet-format/blob/master/LogicalTypes.md
+  has_native_compression:
+    value: true
+    source: https://github.com/apache/parquet-format/blob/master/Compression.md
+  has_encoding_support:
+    value: true
+    source: https://github.com/apache/parquet-format/blob/master/Encodings.md
+  has_metadata:
+    value: true
+    source: https://github.com/apache/parquet-format/blob/master/Encodings.md
+  data_processing_framework_support:
+    - value: Apache Spark
+      source: https://spark.apache.org/docs/latest/sql-data-sources-parquet.html
+  analytics_query_support:
+    - value: Clickhouse
+      source: https://github.com/ClickHouse/clickhouse-docs/blob/main/docs/en/integrations/data-ingestion/data-formats/parquet.md

@@ -1,0 +1,40 @@
+name: CSV
+description: Comma-Separated Values (CSV) is a text file format that uses commas to separate values in plain text.
+logo: assets/logo/csv.png
+website: https://www.rfc-editor.org/rfc/rfc4180.html
+language_support:
+  - java
+  - scala
+  - c++
+  - python
+  - r
+  - php
+  - go
+license: N/A
+year_created: 0
+company: []
+use_cases: []
+file:
+  is_human_readable:
+    value: true
+    source: https://www.rfc-editor.org/rfc/rfc4180.html
+  orientation:
+    value: row
+    source: https://www.rfc-editor.org/rfc/rfc4180.html
+  has_type_system:
+    value: false
+  has_nested_structure_support:
+    value: false
+  has_native_compression:
+    value: false
+  has_encoding_support:
+    value: true
+    source: https://www.rfc-editor.org/rfc/rfc4180.html
+  has_metadata:
+    value: false
+  data_processing_framework_support:
+    - value: Apache Spark
+      source: https://spark.apache.org/docs/latest/sql-data-sources-csv.html
+  analytics_query_support:
+    - value: Clickhouse
+      source: https://github.com/ClickHouse/clickhouse-docs/blob/main/docs/en/integrations/data-ingestion/data-formats/csv-tsv.md

@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "Data technology comparison specification",
+  "description": "A data technology service, tool, library or system",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the technology"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the technology"
+    },
+    "logo": {
+      "type": "string",
+      "pattern": "^assets/logo/[a-z_]+\\.(svg|png|jpeg)$",
+      "description": "Logo of the technology. Should be a SVG, PNG or JPEG file under the assets/logo directory"
+    },
+    "sourceCode": {
+      "type": "string",
+      "pattern": "https://.*"
+    },
+    "website": {
+      "type": "string",
+      "pattern": "https://.*"
+    },
+    "license": {
+      "type": "string",
+      "enum": [
+        "Academic Free License v3.0",
+        "Apache license 2.0",
+        "Artistic license 2.0",
+        "Boost Software License 1.0",
+        "BSD 2-clause \"Simplified\" license",
+        "BSD 3-clause \"New\" or \"Revised\" license",
+        "BSD 3-clause Clear license",
+        "BSD 4-clause \"Original\" or \"Old\" license",
+        "BSD Zero-Clause license",
+        "Commercial license",
+        "Creative Commons license family",
+        "Creative Commons Zero v1.0 Universal",
+        "Creative Commons Attribution 4.0",
+        "Creative Commons Attribution ShareAlike 4.0",
+        "Do What The F*ck You Want To Public License",
+        "Educational Community License v2.0",
+        "Eclipse Public License 1.0",
+        "Eclipse Public License 2.0",
+        "European Union Public License 1.1",
+        "GNU Affero General Public License v3.0",
+        "GNU General Public License family",
+        "GNU General Public License v2.0",
+        "GNU General Public License v3.0",
+        "GNU Lesser General Public License family",
+        "GNU Lesser General Public License v2.1",
+        "GNU Lesser General Public License v3.0",
+        "ISC",
+        "LaTeX Project Public License v1.3c",
+        "Microsoft Public License",
+        "MIT",
+        "Mozilla Public License 2.0",
+        "N/A",
+        "Open Software License 3.0",
+        "PostgreSQL License",
+        "SIL Open Font License 1.1",
+        "University of Illinois/NCSA Open Source License",
+        "The Unlicense",
+        "zLib License"
+      ]
+    },
+    "year_created": {
+      "type": "integer"
+    },
+    "company": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "use_cases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language_support": {
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["java", "scala", "python", "r", "c++", "c", "rust", "javascript", "perl", "kotlin", "go", "php", "swift", "ruby", "matlab", "typescript", "c#"]
+      }
+    },
+    "data_validation": {
+      "$ref": "#/$defs/DataValidationCategory"
+    },
+    "data_visualisation": {
+      "$ref": "#/$defs/DataVisualisationCategory"
+    },
+    "file": {
+      "$ref": "#/$defs/FileCategory"
+    },
+    "job_orchestration": {
+      "$ref": "#/$defs/JobOrchestrationCategory"
+    },
+    "messaging": {
+      "$ref": "#/$defs/MessagingCategory"
+    },
+    "ml_pipelines": {
+      "$ref": "#/$defs/MLPipelinesCategory"
+    },
+    "object_store": {
+      "$ref": "#/$defs/ObjectStoreCategory"
+    },
+    "olap": {
+      "$ref": "#/$defs/OLAPCategory"
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["database"]
+    },
+    {
+      "required": ["data_validation"]
+    },
+    {
+      "required": ["data_visualisation"]
+    },
+    {
+      "required": ["file"]
+    },
+    {
+      "required": ["job_orchestration"]
+    },
+    {
+      "required": ["messaging"]
+    },
+    {
+      "required": ["ml_pipelines"]
+    },
+    {
+      "required": ["object_store"]
+    },
+    {
+      "required": ["olap"]
+    }
+  ],
+  "required": ["name", "description", "logo", "website", "license", "year_created", "company", "use_cases"],
+  "$defs": {
+    "DatabaseCategory": {
+      "type": "object"
+    },
+    "DataValidationCategory": {
+      "type": "object"
+    },
+    "DataVisualisationCategory": {
+      "type": "object"
+    },
+    "FileCategory": {
+      "type": "object",
+      "description": "Technology falls under category of file",
+      "properties": {
+        "is_human_readable": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format is human readable."
+        },
+        "orientation": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "File format is row or columnar oriented",
+              "enum": [
+                "row",
+                "column"
+              ]
+            },
+            "source": {
+              "$ref": "#/$defs/Source"
+            }
+          }
+        },
+        "has_type_system": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format checks and enforces column data types"
+        },
+        "has_nested_structure_support": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format supports nested column structures"
+        },
+        "has_native_compression": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format supports compressions algorithms natively (does not rely on external tools/commands)"
+        },
+        "has_encoding_support": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format supports using different encodings for data stored"
+        },
+        "has_metadata": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format contains metadata about the file and it's contents. For example summary statistics such as min and max, record count, creation time, etc."
+        },
+        "data_processing_framework_support": {
+          "type": "array",
+          "default": [],
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/DataProcessingFrameworkSupportSource"
+          }
+        },
+        "analytics_query_support": {
+          "type": "array",
+          "default": [],
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/AnalyticsQuerySupportSource"
+          }
+        }
+      },
+      "required": ["is_human_readable", "orientation", "has_type_system", "has_nested_structure_support", "has_native_compression", "has_encoding_support", "has_metadata", "data_processing_framework_support", "analytics_query_support"]
+    },
+    "JobOrchestrationCategory": {
+      "type": "object"
+    },
+    "MessagingCategory": {
+      "type": "object"
+    },
+    "MLPipelinesCategory": {
+      "type": "object"
+    },
+    "ObjectStoreCategory": {
+      "type": "object"
+    },
+    "OLAPCategory": {
+      "type": "object"
+    },
+    "Benchmarking": {
+      "type": "object",
+      "properties": {
+        "is_repeatable": {
+          "type": "boolean",
+          "description": "Is it possible without payment or sign-up to run benchmark tests yourself?"
+        },
+        "link_to_results": {
+          "type": "string",
+          "description": "Link to benchmark results."
+        },
+        "link_to_command": {
+          "type": "string",
+          "description": "Link to benchmark commands to reproduce benchmarks."
+        }
+      }
+    },
+    "Source": {
+      "type": "string",
+      "pattern": "https://.*",
+      "description": "Link to the source of this information"
+    },
+    "BooleanSource": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "boolean"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      }
+    },
+    "DataProcessingFrameworkSupportSource": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": ["Apache Spark", "Apache Drill", "Apache Hive", "Apache Hadoop", "Apache Pig", "Apache Crunch", "Apache Storm", "Apache Flink", "Apache Beam", "Apache NiFi", "Apache Gobblin"]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      }
+    },
+    "AnalyticsQuerySupportSource": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": ["Apache Impala", "Apache Druid", "Apache Hive", "Presto", "Trino", "DuckDB", "AWS Athena", "Firebolt", "Clickhouse", "BigQuery", "Azure Synapse"]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      }
+    }
+  }
+}

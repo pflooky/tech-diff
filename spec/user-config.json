@@ -1,0 +1,1689 @@
+{
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/UserSingleDbConfig"
+    },
+    {
+      "$ref": "#/$defs/UserMultipleDbConfig"
+    }
+  ],
+  "$defs": {
+    "UserSingleDbConfig": {
+      "type": "object",
+      "properties": {
+        "default_config": {
+          "$ref": "#/$defs/DefaultConfig"
+        },
+        "tables": {
+          "type": "array",
+          "default": "[]",
+          "items": {
+            "$ref": "#/$defs/UserTableConfig"
+          }
+        },
+        "cycle_resolution_strategy": {
+          "$ref": "#/$defs/CycleResolutionStrategy"
+        },
+        "schema_creation_mode": {
+          "$ref": "#/$defs/SchemaCreationMode"
+        },
+        "table_truncation_mode": {
+          "$ref": "#/$defs/TableTruncationMode"
+        },
+        "safety_mode": {
+          "$ref": "#/$defs/SafetyMode"
+        },
+        "global_seed": {
+          "type": "integer",
+          "default": "0"
+        },
+        "schemas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "metadata": {
+          "$ref": "#/$defs/AdditionalMetadata"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UserMultipleDbConfig": {
+      "type": "object",
+      "properties": {
+        "transformation_configs": {
+          "$ref": "#/$defs/TransformationConfigs"
+        },
+        "synchronised_transformations": {
+          "type": "array",
+          "default": "[]",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "data_source_mapping": {
+          "$ref": "#/$defs/DataSourceMapping"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DefaultConfig": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/UserTransformationMode"
+        },
+        "target_ratio": {
+          "type": "number",
+          "format": "double"
+        },
+        "target_row_number": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "insert_batch_size": {
+          "type": "integer"
+        },
+        "use_working_directory": {
+          "type": "boolean",
+          "default": "true"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DefaultConfigItem"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "UserTableConfig": {
+      "type": "object",
+      "properties": {
+        "table_name_with_schema": {
+          "type": "string"
+        },
+        "mode": {
+          "$ref": "#/$defs/UserTransformationMode"
+        },
+        "transformations": {
+          "type": "array",
+          "default": "[]",
+          "items": {
+            "$ref": "#/$defs/ColumnTransformationParams"
+          }
+        },
+        "target_ratio": {
+          "type": "number",
+          "format": "double"
+        },
+        "target_row_number": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "cycle_breaker_references": {
+          "type": "array",
+          "default": "[]",
+          "items": {
+            "type": "string"
+          }
+        },
+        "insert_batch_size": {
+          "type": "integer"
+        },
+        "use_working_directory": {
+          "type": "boolean",
+          "default": "true"
+        },
+        "filter": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CycleResolutionStrategy": {
+      "type": "string",
+      "enum": [
+        "FAIL",
+        "DELETE_NOT_REQUIRED",
+        "DEFER_FOREIGN_KEY"
+      ]
+    },
+    "SchemaCreationMode": {
+      "type": "string",
+      "enum": [
+        "DO_NOT_CREATE",
+        "CREATE",
+        "CREATE_IF_NOT_EXISTS",
+        "DROP_AND_CREATE"
+      ]
+    },
+    "TableTruncationMode": {
+      "type": "string",
+      "enum": [
+        "DO_NOT_TRUNCATE",
+        "TRUNCATE",
+        "IGNORE"
+      ]
+    },
+    "SafetyMode": {
+      "type": "string",
+      "enum": [
+        "STRICT",
+        "RELAXED"
+      ]
+    },
+    "AdditionalMetadata": {
+      "type": "object",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TableAdditionalMetadata"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TransformationConfigs": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/UserSingleDbConfig"
+      }
+    },
+    "DataSourceMapping": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/DataSourceMappingEntry"
+      }
+    },
+    "UserTransformationMode": {
+      "type": "string",
+      "enum": [
+        "MASKING",
+        "GENERATION",
+        "KEEP"
+      ]
+    },
+    "DefaultConfigItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Condition"
+          }
+        },
+        "transformation": {
+          "$ref": "#/$defs/TransformationParams"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ColumnTransformationParams": {
+      "type": "object",
+      "properties": {
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "params": {
+          "$ref": "#/$defs/TransformationParams"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mapping": {
+          "$ref": "#/$defs/ValueMapping"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TableAdditionalMetadata": {
+      "type": "object",
+      "properties": {
+        "table_name_with_schema": {
+          "type": "string"
+        },
+        "foreign_keys": {
+          "$ref": "#/$defs/ForeignKeysAdditionalMetadata"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DataSourceMappingEntry": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Condition": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/IsKeyCondition"
+        },
+        {
+          "$ref": "#/$defs/IsPrimaryKeyCondition"
+        },
+        {
+          "$ref": "#/$defs/IsForeignKeyCondition"
+        },
+        {
+          "$ref": "#/$defs/IsIgnoredForeignKeyCondition"
+        },
+        {
+          "$ref": "#/$defs/IsUniqueCondition"
+        },
+        {
+          "$ref": "#/$defs/IsNullableCondition"
+        },
+        {
+          "$ref": "#/$defs/ModeInCondition"
+        },
+        {
+          "$ref": "#/$defs/TrueCondition"
+        },
+        {
+          "$ref": "#/$defs/DataTypeCondition"
+        },
+        {
+          "$ref": "#/$defs/UniqueValuesCondition"
+        },
+        {
+          "$ref": "#/$defs/IsEmptyCondition"
+        },
+        {
+          "$ref": "#/$defs/ParentTransformationParamsCondition"
+        },
+        {
+          "$ref": "#/$defs/NoParentTransformationParamsCondition"
+        },
+        {
+          "$ref": "#/$defs/IsUuidCondition"
+        },
+        {
+          "$ref": "#/$defs/IsIdentityCondition"
+        },
+        {
+          "$ref": "#/$defs/SingleDistinctValueCondition"
+        },
+        {
+          "$ref": "#/$defs/DistinctValuesCondition"
+        },
+        {
+          "$ref": "#/$defs/StandardDeviationCondition"
+        },
+        {
+          "$ref": "#/$defs/NotCondition"
+        },
+        {
+          "$ref": "#/$defs/SafetyModeCondition"
+        },
+        {
+          "$ref": "#/$defs/IsIgnoredTableCondition"
+        }
+      ]
+    },
+    "TransformationParams": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/CategoricalGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/ConditionalGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/ContinuousGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/QuantileGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/CopyParentGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/ForeignKeyGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/UniqueGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/FormatPreservingHashingParams"
+        },
+        {
+          "$ref": "#/$defs/FormattedStringGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/IntSequenceGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/StringSequenceGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/NoisingParams"
+        },
+        {
+          "$ref": "#/$defs/NullGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/PassthroughParams"
+        },
+        {
+          "$ref": "#/$defs/PersonGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/AddressGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/RedactionParams"
+        },
+        {
+          "$ref": "#/$defs/UniqueHashingParams"
+        },
+        {
+          "$ref": "#/$defs/DateTimeUniqueHashingParams"
+        },
+        {
+          "$ref": "#/$defs/DateGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/UuidGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/ConstantNumericGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/ConstantStringGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/ConstantDateGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/ConstantBooleanGeneratorParams"
+        },
+        {
+          "$ref": "#/$defs/JsonPointerTransformerParams"
+        },
+        {
+          "$ref": "#/$defs/VoidGeneratorParams"
+        }
+      ]
+    },
+    "ValueMapping": {
+      "type": "object",
+      "properties": {
+        "read": {
+          "type": "string"
+        },
+        "write": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ForeignKeysAdditionalMetadata": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/ForeignKeyAdditionalMetadata"
+      }
+    },
+    "IsKeyCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_key"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsPrimaryKeyCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_primary_key"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsForeignKeyCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_foreign_key"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsIgnoredForeignKeyCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_ignored_foreign_key"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsUniqueCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_unique"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsNullableCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_nullable"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ModeInCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "mode_in"
+        },
+        "modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/UserTransformationMode"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TrueCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "true"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DataTypeCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "data_type"
+        },
+        "data_type": {
+          "$ref": "#/$defs/TransformationDataType"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UniqueValuesCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "unique_values"
+        },
+        "unique_ratio_threshold": {
+          "type": "number",
+          "format": "double",
+          "default": "0.5"
+        },
+        "min_table_size_threshold": {
+          "type": "integer",
+          "default": "10"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsEmptyCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_empty"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ParentTransformationParamsCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "parent_transformation"
+        },
+        "parent_transformation_params": {
+          "$ref": "#/$defs/TransformationParams"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NoParentTransformationParamsCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "no_parent_transformation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsUuidCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_uuid"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsIdentityCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_identity"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SingleDistinctValueCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "single_distinct_value"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DistinctValuesCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "distinct_values"
+        },
+        "minimum_threshold": {
+          "type": "integer"
+        },
+        "maximum_threshold": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StandardDeviationCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "std_dev"
+        },
+        "std_dev_threshold": {
+          "type": "number",
+          "format": "double",
+          "default": "0.0"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NotCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "not"
+        },
+        "condition": {
+          "$ref": "#/$defs/Condition"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SafetyModeCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "safety_mode"
+        },
+        "mode": {
+          "$ref": "#/$defs/SafetyMode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsIgnoredTableCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "is_ignored_table"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CategoricalGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "categorical_generator"
+        },
+        "categories": {
+          "$ref": "#/$defs/Categories"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ConditionalGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "conditional_generator"
+        },
+        "conditional_column": {
+          "type": "string"
+        },
+        "conditional_table": {
+          "type": "string"
+        },
+        "conditional_value": {
+          "type": "string"
+        },
+        "if_false": {
+          "$ref": "#/$defs/TransformationParams"
+        },
+        "if_true": {
+          "$ref": "#/$defs/TransformationParams"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContinuousGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "continuous_generator"
+        },
+        "mean": {
+          "type": "number",
+          "format": "double"
+        },
+        "std": {
+          "type": "number",
+          "format": "double"
+        },
+        "min": {
+          "type": "number",
+          "format": "double"
+        },
+        "max": {
+          "type": "number",
+          "format": "double"
+        },
+        "numeric_type": {
+          "$ref": "#/$defs/NumericType"
+        },
+        "round": {
+          "type": "integer",
+          "default": "0"
+        }
+      },
+      "additionalProperties": false
+    },
+    "QuantileGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "quantile_generator"
+        },
+        "hist": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "bin_edges": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "numeric_type": {
+          "$ref": "#/$defs/NumericType"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CopyParentGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "copy_parent_generator"
+        },
+        "parent_columns": {
+          "type": "array",
+          "default": "[]",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parent_tables": {
+          "type": "array",
+          "default": "[]",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ForeignKeyGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "foreign_key_generator"
+        },
+        "referred_schema": {
+          "type": "string"
+        },
+        "referred_table": {
+          "type": "string"
+        },
+        "referred_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "UniqueGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "unique_generator"
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TransformationParams"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "FormatPreservingHashingParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "format_preserving_hashing"
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormatPreservingHashingGroup"
+          }
+        },
+        "filter": {
+          "$ref": "#/$defs/FormatPreservingHashingFilter"
+        }
+      },
+      "additionalProperties": false
+    },
+    "FormattedStringGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "formatted_string_generator"
+        },
+        "pattern": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IntSequenceGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "int_sequence_generator"
+        },
+        "start_from": {
+          "type": "integer",
+          "default": "0"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StringSequenceGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "string_sequence_generator"
+        },
+        "length": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NoisingParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "noising"
+        },
+        "sensitivity": {
+          "type": "number",
+          "format": "double"
+        },
+        "min": {
+          "type": "number",
+          "format": "double"
+        },
+        "max": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NullGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "null_generator"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PassthroughParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "passthrough"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PersonGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "person_generator"
+        },
+        "column_templates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "consistent_with_column": {
+          "type": "string",
+          "default": "self"
+        },
+        "locale": {
+          "type": "string",
+          "default": "en"
+        },
+        "length_exceeded_mode": {
+          "$ref": "#/$defs/ValueLengthExceededMode"
+        },
+        "column_lengths": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "AddressGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "address_generator"
+        },
+        "column_templates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "consistent_with_column": {
+          "type": "string",
+          "default": "self"
+        },
+        "locale": {
+          "type": "string",
+          "default": "en-GB"
+        },
+        "length_exceeded_mode": {
+          "$ref": "#/$defs/ValueLengthExceededMode"
+        },
+        "column_lengths": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "RedactionParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "redaction"
+        },
+        "action": {
+          "$ref": "#/$defs/Action"
+        },
+        "which": {
+          "$ref": "#/$defs/Position"
+        },
+        "count": {
+          "type": "integer",
+          "default": "4"
+        },
+        "mask_with": {
+          "type": "string",
+          "default": "*"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UniqueHashingParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "unique_hashing"
+        },
+        "max_value": {
+          "type": "number",
+          "format": "double"
+        },
+        "precision": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DateTimeUniqueHashingParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "date_time_unique_hashing"
+        },
+        "min": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "max": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DateGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "date_generator"
+        },
+        "mean": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "std": {
+          "type": "string"
+        },
+        "min": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "max": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UuidGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "uuid_generator"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ConstantNumericGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "constant_numeric"
+        },
+        "value": {
+          "type": "number"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "numeric_type": {
+          "$ref": "#/$defs/NumericType"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ConstantStringGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "constant_string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ConstantDateGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "constant_date"
+        },
+        "value": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "min": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "max": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ConstantBooleanGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "constant_boolean"
+        },
+        "value": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "JsonPointerTransformerParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "json_pointer_transformer"
+        },
+        "specifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/JsonPointersSpecification"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "VoidGeneratorParams": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "void_generator"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ForeignKeyAdditionalMetadata": {
+      "type": "object",
+      "properties": {
+        "referred_database": {
+          "type": "string"
+        },
+        "referred_schema": {
+          "type": "string"
+        },
+        "referred_table": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ForeignKeyColumnMappingAdditionalMetadata"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TransformationDataType": {
+      "type": "string",
+      "enum": [
+        "TEXT",
+        "NUMERIC",
+        "DATE",
+        "BOOLEAN",
+        "ANY"
+      ]
+    },
+    "Categories": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ProvidedCategories"
+        },
+        {
+          "$ref": "#/$defs/CsvFileCategories"
+        }
+      ]
+    },
+    "NumericType": {
+      "type": "string",
+      "enum": [
+        "INT",
+        "LONG",
+        "DOUBLE",
+        "FLOAT",
+        "BIG_DECIMAL",
+        "BIG_INTEGER",
+        "SHORT",
+        "BYTE",
+        "UNSIGNED_BYTE",
+        "UNSIGNED_INTEGER",
+        "UNSIGNED_LONG",
+        "UNSIGNED_SHORT"
+      ]
+    },
+    "FormatPreservingHashingGroup": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "$ref": "#/$defs/FormatPreservingHashingGroupSelector"
+        },
+        "alphabets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormatPreservingHashingGroupAlphabet"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "FormatPreservingHashingFilter": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/FirstCharactersFilter"
+        },
+        {
+          "$ref": "#/$defs/LastCharactersFilter"
+        },
+        {
+          "$ref": "#/$defs/CharactersFilter"
+        },
+        {
+          "$ref": "#/$defs/SubstringFilter"
+        },
+        {
+          "$ref": "#/$defs/RegexFilter"
+        }
+      ]
+    },
+    "ValueLengthExceededMode": {
+      "type": "string",
+      "default": "IGNORE",
+      "enum": [
+        "IGNORE",
+        "TRUNCATE"
+      ]
+    },
+    "Action": {
+      "type": "string",
+      "enum": [
+        "KEEP",
+        "MASK"
+      ]
+    },
+    "Position": {
+      "type": "string",
+      "enum": [
+        "FIRST",
+        "LAST"
+      ]
+    },
+    "JsonPointersSpecification": {
+      "type": null,
+      "properties": {
+        "pointers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transformation": {
+          "$ref": "#/$defs/TransformationParams"
+        },
+        "ignore_errors": {
+          "type": "boolean",
+          "default": "false"
+        }
+      }
+    },
+    "ForeignKeyColumnMappingAdditionalMetadata": {
+      "type": "object",
+      "properties": {
+        "column": {
+          "type": "string"
+        },
+        "referred_column": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProvidedCategories": {
+      "type": "object",
+      "properties": {
+        "value_source": {
+          "const": "PROVIDED"
+        },
+        "type": {
+          "$ref": "#/$defs/CategoriesDictionaryType"
+        },
+        "values": {
+          "$ref": "#/$defs/ProvidedCategoriesValues"
+        },
+        "nullable_weight": {
+          "type": "number",
+          "default": "0.0"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CsvFileCategories": {
+      "type": "object",
+      "properties": {
+        "value_source": {
+          "const": "CSV_FILE"
+        },
+        "type": {
+          "$ref": "#/$defs/CategoriesDictionaryType"
+        },
+        "path": {
+          "type": "string"
+        },
+        "format": {
+          "$ref": "#/$defs/CsvFileCategoriesFormat"
+        },
+        "nullable_weight": {
+          "type": "number",
+          "default": "0.0"
+        }
+      },
+      "additionalProperties": false
+    },
+    "FormatPreservingHashingGroupSelector": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DigitsSelector"
+        },
+        {
+          "$ref": "#/$defs/LowerLettersSelector"
+        },
+        {
+          "$ref": "#/$defs/UpperLettersSelector"
+        },
+        {
+          "$ref": "#/$defs/RegexSelector"
+        },
+        {
+          "$ref": "#/$defs/WordCharactersSelector"
+        }
+      ]
+    },
+    "FormatPreservingHashingGroupAlphabet": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DigitsAlphabet"
+        },
+        {
+          "$ref": "#/$defs/LowerLettersAlphabet"
+        },
+        {
+          "$ref": "#/$defs/UpperLettersAlphabet"
+        },
+        {
+          "$ref": "#/$defs/CustomAlphabet"
+        }
+      ]
+    },
+    "FirstCharactersFilter": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "first"
+        },
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LastCharactersFilter": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "last"
+        },
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CharactersFilter": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "characters"
+        },
+        "characters": {
+          "type": "string"
+        },
+        "ignore_case": {
+          "type": "boolean",
+          "default": "false"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SubstringFilter": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "substring"
+        },
+        "substring": {
+          "type": "string"
+        },
+        "ignore_case": {
+          "type": "boolean",
+          "default": "false"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RegexFilter": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "regex"
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "ignore_case": {
+          "type": "boolean",
+          "default": "false"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CategoriesDictionaryType": {
+      "type": "string",
+      "default": "STRING",
+      "enum": [
+        "STRING",
+        "BOOLEAN",
+        "NUMERIC"
+      ]
+    },
+    "ProvidedCategoriesValues": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "CsvFileCategoriesFormat": {
+      "type": "object",
+      "properties": {
+        "encoding": {
+          "type": "string",
+          "default": "UTF-8"
+        },
+        "delimiter": {
+          "type": "string",
+          "default": ","
+        },
+        "trim": {
+          "type": "boolean",
+          "default": "true"
+        },
+        "columns": {
+          "$ref": "#/$defs/CsvFileCategoriesColumns"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DigitsSelector": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "digits"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LowerLettersSelector": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "lower_letters"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UpperLettersSelector": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "upper_letters"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RegexSelector": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "regex"
+        },
+        "pattern": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "WordCharactersSelector": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "word_characters"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DigitsAlphabet": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "digits"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LowerLettersAlphabet": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "lower_letters"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UpperLettersAlphabet": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "upper_letters"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CustomAlphabet": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "custom"
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CustomAlphabetPart"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "CsvFileCategoriesColumns": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/CsvFileCategoriesColumnsString"
+        },
+        {
+          "$ref": "#/$defs/CsvFileCategoriesColumnsNumeric"
+        }
+      ]
+    },
+    "CustomAlphabetPart": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/CharacterSet"
+        },
+        {
+          "$ref": "#/$defs/UnicodeBlock"
+        },
+        {
+          "$ref": "#/$defs/UnicodeRange"
+        }
+      ]
+    },
+    "CsvFileCategoriesColumnsString": {
+      "type": "object",
+      "properties": {
+        "column_accessor_type": {
+          "const": "NAME"
+        },
+        "categories": {
+          "type": "string"
+        },
+        "weights": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CsvFileCategoriesColumnsNumeric": {
+      "type": "object",
+      "properties": {
+        "column_accessor_type": {
+          "const": "INDEX"
+        },
+        "categories": {
+          "type": "integer"
+        },
+        "weights": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CharacterSet": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "characters"
+        },
+        "characters": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UnicodeBlock": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "unicode_block"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UnicodeRange": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "unicode_range"
+        },
+        "from": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "to": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
