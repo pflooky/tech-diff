@@ -28,7 +28,8 @@ document$.subscribe(function() {
         if (numCols > 4) {
             for (let i = 4; i < numCols; i++) {
                 let column = dataTable.column(i);
-                column.visible(!column.visible());
+                console.log(column);
+                column.visible(false);
             }
         }
     })
