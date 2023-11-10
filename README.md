@@ -1,10 +1,10 @@
-# data-tech-compare
+# tech-diff
 
-Compare different data related technologies. No BS and all sources linked.
+Compare different technologies. No BS and all sources linked.
 
 ## Motivation
 
-- Many new/existing data technologies
+- Many new/existing technologies
 - Hard to compare objectively
 - Biased sources/marketing of data technologies skews views/opinions
 - Find answers to simple questions fast

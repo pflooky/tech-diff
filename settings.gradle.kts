@@ -5,4 +5,4 @@
  * For more detailed information on multi-project builds, please refer to https://docs.gradle.org/8.3/userguide/building_swift_projects.html in the Gradle documentation.
  */
 
-rootProject.name = "data-tech-compare"
+rootProject.name = "tech-diff"
