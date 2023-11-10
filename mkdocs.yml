@@ -1,4 +1,6 @@
 site_name: Data Tech Compare
+repo_url: https://github.com/pflooky/data-tech-compare
+repo_name: data-tech-compare
 
 theme:
   name: material
