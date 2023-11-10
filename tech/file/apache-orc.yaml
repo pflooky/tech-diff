@@ -37,21 +37,25 @@ file:
   has_encoding_support:
     value: true
     source: https://orc.apache.org/specification/ORCv2/#run-length-encoding
+  has_constraint_support:
+    value: false
+  has_acid_support:
+    value: false
   has_metadata:
     value: true
     source: https://orc.apache.org/specification/ORCv2/#postscript
   data_processing_framework_support:
-    - value: Apache Hadoop
-      source: https://orc.apache.org/docs/adopters.html
-    - value: Apache Spark
-      source: https://orc.apache.org/docs/adopters.html
     - value: Apache Flink
+      source: https://orc.apache.org/docs/adopters.html
+    - value: Apache Gobblin
+      source: https://orc.apache.org/docs/adopters.html
+    - value: Apache Hadoop
       source: https://orc.apache.org/docs/adopters.html
     - value: Apache NiFi
       source: https://orc.apache.org/docs/adopters.html
     - value: Apache Pig
       source: https://orc.apache.org/docs/adopters.html
-    - value: Apache Gobblin
+    - value: Apache Spark
       source: https://orc.apache.org/docs/adopters.html
   analytics_query_support:
     - value: Apache Impala

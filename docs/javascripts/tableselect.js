@@ -23,6 +23,13 @@ document$.subscribe(function() {
                 column.visible(!column.visible());
             });
         });
+
+        let numCols = dataTable.columns().nodes().length;
+        if (numCols > 4) {
+            for (let i = 4; i < numCols; i++) {
+                let column = dataTable.column(i);
+                column.visible(!column.visible());
+            }
+        }
     })
 })
-

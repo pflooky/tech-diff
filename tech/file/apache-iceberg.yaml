@@ -1,0 +1,39 @@
+name: Apache Iceberg
+description: Iceberg is a high-performance format for huge analytic tables.
+logo: assets/logo/iceberg.png
+license: Apache license 2.0
+source_code: https://github.com/apache/iceberg
+website: https://iceberg.apache.org/
+year_created: 2017
+company:
+  - Netflix
+language_support: []
+use_cases:
+  - Write once read many
+  - Analytics
+  - Efficient storage
+  - ACID transactions
+file:
+  is_human_readable:
+    value: false
+  orientation:
+    value: column
+  has_type_system:
+    value: true
+  has_nested_structure_support:
+    value: true
+  has_native_compression:
+    value: true
+  has_encoding_support:
+    value: true
+  has_constraint_support:
+    value: false
+  has_acid_support:
+    value: true
+    source: https://iceberg.apache.org/docs/latest/reliability/
+  has_metadata:
+    value: true
+  data_processing_framework_support:
+    - value: Apache Drill
+      source: https://drill.apache.org/docs/iceberg-format-plugin/
+  analytics_query_support: []

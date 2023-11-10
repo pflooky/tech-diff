@@ -17,13 +17,13 @@
       "pattern": "^assets/logo/[a-z_]+\\.(svg|png|jpeg)$",
       "description": "Logo of the technology. Should be a SVG, PNG or JPEG file under the assets/logo directory"
     },
-    "sourceCode": {
+    "source_code": {
       "type": "string",
-      "pattern": "https://.*"
+      "pattern": "https://.*|"
     },
     "website": {
       "type": "string",
-      "pattern": "https://.*"
+      "pattern": "https://.*|"
     },
     "license": {
       "type": "string",
@@ -146,7 +146,7 @@
       "required": ["olap"]
     }
   ],
-  "required": ["name", "description", "logo", "website", "license", "year_created", "company", "use_cases"],
+  "required": ["name", "description", "logo", "source_code", "website", "license", "year_created", "company", "use_cases"],
   "$defs": {
     "DatabaseCategory": {
       "type": "object"
@@ -197,6 +197,14 @@
           "$ref": "#/$defs/BooleanSource",
           "description": "File format supports using different encodings for data stored"
         },
+        "has_constraint_support": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format supports column or table level constraints. An example could be a not null constraint."
+        },
+        "has_acid_support": {
+          "$ref": "#/$defs/BooleanSource",
+          "description": "File format supports ACID transactions (i.e. guarantee that the file will be in a consistent state after running a group of operations)."
+        },
         "has_metadata": {
           "$ref": "#/$defs/BooleanSource",
           "description": "File format contains metadata about the file and it's contents. For example summary statistics such as min and max, record count, creation time, etc."
@@ -218,7 +226,7 @@
           }
         }
       },
-      "required": ["is_human_readable", "orientation", "has_type_system", "has_nested_structure_support", "has_native_compression", "has_encoding_support", "has_metadata", "data_processing_framework_support", "analytics_query_support"]
+      "required": ["is_human_readable", "orientation", "has_type_system", "has_nested_structure_support", "has_native_compression", "has_encoding_support", "has_constraint_support", "has_acid_support", "has_metadata", "data_processing_framework_support", "analytics_query_support"]
     },
     "JobOrchestrationCategory": {
       "type": "object"
@@ -273,7 +281,7 @@
       "properties": {
         "value": {
           "type": "string",
-          "enum": ["Apache Spark", "Apache Drill", "Apache Hive", "Apache Hadoop", "Apache Pig", "Apache Crunch", "Apache Storm", "Apache Flink", "Apache Beam", "Apache NiFi", "Apache Gobblin"]
+          "enum": ["Apache Spark", "Apache Drill", "Apache Hive", "Apache Hadoop", "Apache Pig", "Apache Storm", "Apache Flink", "Apache Beam", "Apache NiFi", "Apache Gobblin"]
         },
         "source": {
           "$ref": "#/$defs/Source"

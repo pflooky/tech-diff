@@ -1,0 +1,44 @@
+name: Delta Lake
+description: Delta Lake is an open-source storage framework that enables building a Lakehouse architecture.
+logo: assets/logo/delta_lake.png
+license: Apache license 2.0
+source_code: https://github.com/delta-io/delta
+website: https://delta.io/
+year_created: 2019
+company:
+  - Databricks
+language_support:
+  - scala
+  - java
+  - python
+  - rust
+use_cases:
+  - Write once read many
+  - Analytics
+  - Efficient storage
+  - ACID transactions
+file:
+  is_human_readable:
+    value: false
+  orientation:
+    value: column
+  has_type_system:
+    value: true
+  has_nested_structure_support:
+    value: true
+  has_native_compression:
+    value: true
+  has_encoding_support:
+    value: true
+  has_constraint_support:
+    value: true
+    source: https://docs.delta.io/latest/delta-constraints.html
+  has_acid_support:
+    value: true
+    source: https://docs.delta.io/latest/concurrency-control.html
+  has_metadata:
+    value: true
+  data_processing_framework_support:
+    - value: Apache Drill
+      source: https://drill.apache.org/docs/delta-lake-format-plugin/
+  analytics_query_support: []

@@ -64,7 +64,7 @@ hide:
                     <#if curr_attribute?is_sequence>
             <td>
                         <#list curr_attribute as inner_curr_attr>
-            <a href="${inner_curr_attr.source}">${inner_curr_attr.value}, </a>
+                <a href="${inner_curr_attr.source}">${inner_curr_attr.value}, </a>
                         </#list>
             </td>
                     <#elseif curr_attribute.value?has_content && curr_attribute.value?is_boolean && curr_attribute.source?has_content>

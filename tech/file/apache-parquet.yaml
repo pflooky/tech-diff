@@ -39,10 +39,22 @@ file:
   has_encoding_support:
     value: true
     source: https://github.com/apache/parquet-format/blob/master/Encodings.md
+  has_constraint_support:
+    value: false
+  has_acid_support:
+    value: false
   has_metadata:
     value: true
     source: https://github.com/apache/parquet-format/blob/master/Encodings.md
   data_processing_framework_support:
+    - value: Apache Beam
+      source: https://beam.apache.org/documentation/io/built-in/parquet/
+    - value: Apache Drill
+      source: https://drill.apache.org/docs/parquet-format/
+    - value: Apache Hive
+      source: https://cwiki.apache.org/confluence/display/Hive/Parquet
+    - value: Apache Flink
+      source: https://nightlies.apache.org/flink/flink-docs-master/docs/connectors/table/formats/parquet/
     - value: Apache Spark
       source: https://spark.apache.org/docs/latest/sql-data-sources-parquet.html
   analytics_query_support:

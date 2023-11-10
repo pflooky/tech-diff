@@ -1,6 +1,7 @@
 name: CSV
 description: Comma-Separated Values (CSV) is a text file format that uses commas to separate values in plain text.
 logo: assets/logo/csv.png
+source_code: ""
 website: https://www.rfc-editor.org/rfc/rfc4180.html
 language_support:
   - java
@@ -28,11 +29,28 @@ file:
   has_native_compression:
     value: false
   has_encoding_support:
-    value: true
-    source: https://www.rfc-editor.org/rfc/rfc4180.html
+    value: false
+  has_constraint_support:
+    value: false
+  has_acid_support:
+    value: false
   has_metadata:
     value: false
   data_processing_framework_support:
+    - value: Apache Beam
+      source: https://beam.apache.org/releases/javadoc/current/org/apache/beam/sdk/io/csv/CsvIO.html
+    - value: Apache Drill
+      source: https://drill.apache.org/docs/text-files-csv-tsv-psv/
+    - value: Apache Flink
+      source: https://nightlies.apache.org/flink/flink-docs-master/docs/connectors/datastream/formats/csv/
+    - value: Apache Gobblin
+      source: https://github.com/apache/gobblin/blob/9e30c6c3bca857942fba5d10345b1be14adc1942/gobblin-core/src/main/java/org/apache/gobblin/source/extractor/filebased/CsvFileDownloader.java#L39
+    - value: Apache Hive
+      source: https://cwiki.apache.org/confluence/display/hive/csv+serde
+    - value: Apache NiFi
+      source: https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-record-serialization-services-nar/1.23.2/org.apache.nifi.csv.CSVReader/index.html
+    - value: Apache Pig
+      source: https://pig.apache.org/docs/latest/api/org/apache/pig/piggybank/storage/CSVLoader.html
     - value: Apache Spark
       source: https://spark.apache.org/docs/latest/sql-data-sources-csv.html
   analytics_query_support:

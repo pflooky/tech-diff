@@ -22,6 +22,10 @@ buildscript {
 
 tasks.register("generate") {
     doLast {
+        def sortByName = { a, b ->
+            a.name <=> b.name
+        }
+
         List<String> techTypes = List.of("file")
         LoaderOptions loaderOptions = new LoaderOptions()
         Yaml yaml = new Yaml(loaderOptions)
@@ -36,7 +40,7 @@ tasks.register("generate") {
             var root = new HashMap()
             var innerTechTypes = new ArrayList()
 
-            baseDir.traverse(type: FILES) { file ->
+            baseDir.traverse(type: FILES, sort: sortByName) { file ->
                 var parsedYaml = yaml.load(file.getText())
                 println("Processing: ${parsedYaml["name"]}")
                 root.put(parsedYaml["name"], parsedYaml)
