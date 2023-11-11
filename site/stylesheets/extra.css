@@ -1,3 +1,11 @@
 .red-cross {
     color: #d9534f;
 }
+
+.md-header {
+    position: unset;
+}
+
+.sorting_disabled {
+    font-size: 0.8rem;
+}

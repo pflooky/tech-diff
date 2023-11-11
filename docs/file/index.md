@@ -25,7 +25,7 @@ hide:
     </thead>
     <tbody>
         <tr>
-            <th><b>Name</b></th>
+            <td><b>Name</b></td>
             <td>Apache Iceberg</td>
             <td>Apache ORC</td>
             <td>Apache Parquet</td>
@@ -33,7 +33,7 @@ hide:
             <td>Delta Lake</td>
         </tr>
         <tr>
-            <th><b>Description</b></th>
+            <td><b>Description</b></td>
             <td>Iceberg is a high-performance format for huge analytic tables.</td>
             <td>ORC is a self-describing type-aware columnar file format designed for Hadoop workloads.</td>
             <td>Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval.</td>
@@ -41,7 +41,7 @@ hide:
             <td>Delta Lake is an open-source storage framework that enables building a Lakehouse architecture.</td>
         </tr>
         <tr>
-            <th><b>License</b></th>
+            <td><b>License</b></td>
             <td>Apache license 2.0</td>
             <td>Apache license 2.0</td>
             <td>Apache license 2.0</td>
@@ -49,7 +49,7 @@ hide:
             <td>Apache license 2.0</td>
         </tr>
         <tr>
-            <th><b>Source code</b></th>
+            <td><b>Source code</b></td>
             <td><a href="https://github.com/apache/iceberg">https://github.com/apache/iceberg</a></td>
             <td><a href="https://github.com/apache/orc">https://github.com/apache/orc</a></td>
             <td><a href="https://github.com/apache/parquet-format">https://github.com/apache/parquet-format</a></td>
@@ -57,7 +57,7 @@ hide:
             <td><a href="https://github.com/delta-io/delta">https://github.com/delta-io/delta</a></td>
         </tr>
         <tr>
-            <th><b>Website</b></th>
+            <td><b>Website</b></td>
             <td><a href="https://iceberg.apache.org/">https://iceberg.apache.org/</a></td>
             <td><a href="https://orc.apache.org/">https://orc.apache.org/</a></td>
             <td><a href="https://parquet.apache.org/">https://parquet.apache.org/</a></td>
@@ -65,7 +65,7 @@ hide:
             <td><a href="https://delta.io/">https://delta.io/</a></td>
         </tr>
         <tr>
-            <th><b>Year created</b></th>
+            <td><b>Year created</b></td>
             <td>2017</td>
             <td>2013</td>
             <td>2013</td>
@@ -73,7 +73,7 @@ hide:
             <td>2019</td>
         </tr>
         <tr>
-            <th><b>Company</b></th>
+            <td><b>Company</b></td>
             <td>Netflix</td>
             <td>Hortonworks, Facebook</td>
             <td>Twitter, Cloudera</td>
@@ -81,7 +81,7 @@ hide:
             <td>Databricks</td>
         </tr>
         <tr>
-            <th><b>Language support</b></th>
+            <td><b>Language support</b></td>
             <td></td>
             <td>java, scala, c++, python</td>
             <td>java, scala, c++, python, r, php</td>
@@ -89,7 +89,7 @@ hide:
             <td>scala, java, python, rust</td>
         </tr>
         <tr>
-            <th><b>Use cases</b></th>
+            <td><b>Use cases</b></td>
             <td>Write once read many, Analytics, Efficient storage, ACID transactions</td>
             <td>Write once read many, Analytics, Efficient storage, ACID transactions</td>
             <td>Write once read many, Analytics, Efficient storage, Column based queries</td>
@@ -97,7 +97,7 @@ hide:
             <td>Write once read many, Analytics, Efficient storage, ACID transactions</td>
         </tr>
         <tr>
-            <th><b>Is human readable</b></th>
+            <td><b>Is human readable</b></td>
             <td>    <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg></span>
 </td>
             <td><a href="https://orc.apache.org/specification/ORCv2/#motivation">    <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg></span>
@@ -110,7 +110,7 @@ hide:
 </td>
         </tr>
         <tr>
-            <th><b>Orientation</b></th>
+            <td><b>Orientation</b></td>
             <td>column</td>
             <td><a href="https://orc.apache.org/specification/ORCv2/#motivation">row</a></td>
             <td><a href="https://github.com/apache/parquet-format/blob/master/README.md">column</a></td>
@@ -118,7 +118,7 @@ hide:
             <td>column</td>
         </tr>
         <tr>
-            <th><b>Has type system</b></th>
+            <td><b>Has type system</b></td>
             <td>    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
 </td>
             <td><a href="https://orc.apache.org/docs/types.html">    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
@@ -131,7 +131,7 @@ hide:
 </td>
         </tr>
         <tr>
-            <th><b>Has nested structure support</b></th>
+            <td><b>Has nested structure support</b></td>
             <td>    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
 </td>
             <td><a href="https://orc.apache.org/docs/types.html">    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
@@ -144,7 +144,7 @@ hide:
 </td>
         </tr>
         <tr>
-            <th><b>Has native compression</b></th>
+            <td><b>Has native compression</b></td>
             <td>    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
 </td>
             <td><a href="https://orc.apache.org/specification/ORCv2/#compression">    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
@@ -157,7 +157,7 @@ hide:
 </td>
         </tr>
         <tr>
-            <th><b>Has encoding support</b></th>
+            <td><b>Has encoding support</b></td>
             <td>    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
 </td>
             <td><a href="https://orc.apache.org/specification/ORCv2/#run-length-encoding">    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
@@ -170,7 +170,7 @@ hide:
 </td>
         </tr>
         <tr>
-            <th><b>Has constraint support</b></th>
+            <td><b>Has constraint support</b></td>
             <td>    <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg></span>
 </td>
             <td>    <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg></span>
@@ -183,7 +183,7 @@ hide:
 </a></td>
         </tr>
         <tr>
-            <th><b>Has acid support</b></th>
+            <td><b>Has acid support</b></td>
             <td><a href="https://iceberg.apache.org/docs/latest/reliability/">    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
 </a></td>
             <td>    <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg></span>
@@ -196,7 +196,7 @@ hide:
 </a></td>
         </tr>
         <tr>
-            <th><b>Has metadata</b></th>
+            <td><b>Has metadata</b></td>
             <td>    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
 </td>
             <td><a href="https://orc.apache.org/specification/ORCv2/#postscript">    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
@@ -209,7 +209,7 @@ hide:
 </td>
         </tr>
         <tr>
-            <th><b>Data processing framework support</b></th>
+            <td><b>Data processing framework support</b></td>
             <td>
                 <a href="https://drill.apache.org/docs/iceberg-format-plugin/">Apache Drill, </a>
             </td>
@@ -243,7 +243,7 @@ hide:
             </td>
         </tr>
         <tr>
-            <th><b>Analytics query support</b></th>
+            <td><b>Analytics query support</b></td>
             <td>
             </td>
             <td>

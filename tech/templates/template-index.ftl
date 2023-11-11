@@ -38,7 +38,7 @@ hide:
 <#list tech_attributes as attribute>
         <#if attribute != main_tech && attribute != "logo">
         <tr>
-            <th><b>${attribute?replace("_", " ")?cap_first}</b></th>
+            <td><b>${attribute?replace("_", " ")?cap_first}</b></td>
             <#list tech_types as tech>
                 <#assign curr_attribute=.vars[tech][attribute]>
                 <#if curr_attribute?is_string && curr_attribute?starts_with("http")>
@@ -58,7 +58,7 @@ hide:
             <#assign inner_tech_attributes=.vars[tech_types[0]][attribute]?keys>
             <#list inner_tech_attributes as inner_attribute>
         <tr>
-            <th><b>${inner_attribute?replace("_", " ")?cap_first}</b></th>
+            <td><b>${inner_attribute?replace("_", " ")?cap_first}</b></td>
                 <#list tech_types as tech>
                     <#assign curr_attribute=.vars[tech][main_tech][inner_attribute]>
                     <#if curr_attribute?is_sequence>

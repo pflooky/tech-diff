@@ -1,7 +1,23 @@
-let prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-let html = document.querySelector('html');
+const matchDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+if (matchDarkMode.matches) {
+    document.querySelector('html').classList.add("dark");
+}
 
-html.classList.add(prefers);
+let colourPaletteButton = document.querySelectorAll('[data-md-component="palette"]');
+if (colourPaletteButton.length > 0) {
+    colourPaletteButton[0].addEventListener("click", function(event) {
+        event.stopPropagation();
+        let targetAttr = event.target.getAttribute("data-md-color-media");
+        if (targetAttr != null) {
+            let html = document.querySelector("html");
+            if (targetAttr === "(prefers-color-scheme: light)" && html.classList.contains("dark")) {
+                html.classList.remove("dark");
+            } else if (targetAttr === "(prefers-color-scheme: dark)" && !html.classList.contains("dark")) {
+                html.classList.add("dark");
+            }
+        }
+    })
+}
 
 document$.subscribe(function() {
     const tables = document.querySelectorAll("table");
@@ -9,7 +25,8 @@ document$.subscribe(function() {
         const dataTable = new DataTable(table, {
             ordering: false,
             paging: false,
-            autoWidth: true
+            autoWidth: true,
+            fixedHeader: true
         })
 
         document.querySelectorAll("a.toggle-vis").forEach((el) => {

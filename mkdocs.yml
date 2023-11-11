@@ -1,10 +1,12 @@
 site_name: Tech Diff
+site_url: https://tech-diff.com/
 repo_url: https://github.com/pflooky/tech-diff
 repo_name: tech-diff
 
 theme:
   name: material
   features:
+    - header.autohide
     - navigation.tabs
     - navigation.sections
     - navigation.instant
@@ -42,10 +44,12 @@ nav:
 extra_javascript:
   - https://code.jquery.com/jquery-3.7.0.js
   - https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js
+  - https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js
   - javascripts/tableselect.js
 
 extra_css:
   - https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css
+  - https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css
   - stylesheets/extra.css
 
 markdown_extensions:
