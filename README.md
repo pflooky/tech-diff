@@ -17,6 +17,19 @@ Compare different technologies. No BS and all sources linked.
 3. Template markdown file [here](tech/templates/template-index.ftl)
 4. Run `./gradlew generate` to generate markdown files
 5. Run `mkdocs build` to generate site
+6. Open [site/index.html](site/index.html) to see result
+
+## How to contribute
+
+- Add new high level type of technology (i.e. databases, object stores, messaging system)
+    - Add properties to [JSON schema here](spec/data-tech-compare-spec.json). Ensure they are all required fields
+    - Add folder under [tech](tech) folder to house the corresponding YAML files
+    - Add in YAML file(s) for each respective implementation of that technology
+- Add new implementation of technology (i.e. Apache Parquet for file formats)
+    - Add in YAML file under respective high level type of technology (i.e. [apache-parquet.yaml under tech/file folder](tech/file/apache-parquet.yaml))
+
+Try to ensure all sources linked are high quality sources. This means it should preferably come directly from the 
+project itself (either from documentation or source code).
 
 ## Categories
 
