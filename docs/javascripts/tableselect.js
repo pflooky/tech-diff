@@ -32,6 +32,7 @@ document$.subscribe(function() {
         document.querySelectorAll("a.toggle-vis").forEach((el) => {
             el.addEventListener('click', function (e) {
                 e.preventDefault();
+                e.stopPropagation();
 
                 let columnIdx = el.getAttribute("data-column");
                 let column = dataTable.column(columnIdx);
