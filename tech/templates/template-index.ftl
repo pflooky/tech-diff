@@ -12,8 +12,10 @@
         <#return greenTick>
     <#elseif attribute == "maybe">
         <#return maybeMinus>
-    <#else>
+    <#elseif attribute == "no">
         <#return redCross>
+    <#else>
+        <#return attribute>
     </#if>
 </#function>
 ---

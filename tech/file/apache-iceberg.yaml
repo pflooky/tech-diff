@@ -17,7 +17,8 @@ file:
   is_human_readable:
     value: "no"
   orientation:
-    value: column
+    value: column or row
+    source: https://iceberg.apache.org/docs/latest/configuration/
   has_type_system:
     value: "yes"
     source: https://iceberg.apache.org/docs/latest/schemas/
@@ -26,16 +27,18 @@ file:
     source: https://iceberg.apache.org/docs/latest/schemas/
   has_native_compression:
     value: "yes"
+    source: https://iceberg.apache.org/docs/latest/configuration/
   has_encoding_support:
     value: "yes"
+    source: https://iceberg.apache.org/docs/latest/configuration/
   has_constraint_support:
     value: "no"
-    source: https://iceberg.apache.org/docs/latest/reliability/
   has_acid_support:
     value: "yes"
     source: https://iceberg.apache.org/docs/latest/reliability/
   has_metadata:
     value: "yes"
+    source: https://iceberg.apache.org/spec/
   has_encryption_support:
     value: "maybe"
     source: https://iceberg.apache.org/docs/latest/configuration/

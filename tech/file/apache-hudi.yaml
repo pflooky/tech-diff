@@ -17,7 +17,7 @@ file:
   is_human_readable:
     value: "no"
   orientation:
-    value: column
+    value: column or row
     source: https://hudi.apache.org/docs/configurations/#hoodietablebasefileformat
   has_type_system:
     value: "yes"

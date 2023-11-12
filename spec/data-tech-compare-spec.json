@@ -170,10 +170,11 @@
           "properties": {
             "value": {
               "type": "string",
-              "description": "File format is row or columnar oriented",
+              "description": "File format is row or column oriented (could depend on underlying storage layer)",
               "enum": [
                 "row",
-                "column"
+                "column",
+                "column or row"
               ]
             },
             "source": {
