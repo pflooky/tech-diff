@@ -52,6 +52,18 @@ extra_css:
   - https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css
   - stylesheets/extra.css
 
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/pflooky/tech-diff
+    - icon: fontawesome/brands/medium
+      link: https://medium.com/@pflooky
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/peter-flook/
+  analytics:
+    provider: google
+    property: G-351NDXP7ZF
+
 markdown_extensions:
   - attr_list
   - def_list
