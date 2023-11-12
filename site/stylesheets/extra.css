@@ -17,3 +17,7 @@
 .sorting_disabled {
     font-size: 0.8rem;
 }
+
+.md-button-column-visible {
+    background-color: royalblue;
+}
