@@ -1,12 +1,17 @@
 <#assign greenTick>
-    <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2705.svg" title=":white_check_mark:">
+    <span class="twemoji green-tick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9Z"></path></svg></span>
+</#assign>
+<#assign maybeMinus>
+    <span class="twemoji maybe-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13H7v-2h10m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"></path></svg></span>
 </#assign>
 <#assign redCross>
-    <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg></span>
+    <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12 6.47 2 12 2m3.59 5L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41 15.59 7Z"></path></svg></span>
 </#assign>
-<#function getBooleanEmoji attribute>
-    <#if attribute>
+<#function getHasSupportEmoji attribute>
+    <#if attribute == "yes">
         <#return greenTick>
+    <#elseif attribute == "maybe">
+        <#return maybeMinus>
     <#else>
         <#return redCross>
     </#if>
@@ -67,18 +72,18 @@ hide:
                 <a href="${inner_curr_attr.source}">${inner_curr_attr.value}, </a>
                         </#list>
             </td>
-                    <#elseif curr_attribute.value?has_content && curr_attribute.value?is_boolean && curr_attribute.source?has_content>
-            <td><a href="${curr_attribute.source}">${getBooleanEmoji(curr_attribute.value)}</a></td>
-                    <#elseif curr_attribute.value?has_content && curr_attribute.value?is_string && curr_attribute.source?has_content>
-            <td><a href="${curr_attribute.source}">${curr_attribute.value}</a></td>
+                    <#elseif curr_attribute.value?has_content && curr_attribute.source?has_content && curr_attribute.notes?has_content>
+            <td><a href="${curr_attribute.source}" title="${curr_attribute.notes}">${getHasSupportEmoji(curr_attribute.value)}</a></td>
+                    <#elseif curr_attribute.value?has_content && curr_attribute.source?has_content>
+            <td><a href="${curr_attribute.source}">${getHasSupportEmoji(curr_attribute.value)}</a></td>
                     <#elseif curr_attribute.value?has_content && curr_attribute.value?is_sequence && curr_attribute.source?has_content>
             <td><a href="${curr_attribute.source}">${curr_attribute.value?join(", ")}</a></td>
                     <#elseif curr_attribute.value?is_sequence>
             <td>${curr_attribute.value?join(", ")}</td>
-                    <#elseif curr_attribute.value?is_boolean>
-            <td>${getBooleanEmoji(curr_attribute.value)}</td>
+                    <#elseif curr_attribute.value?is_string>
+            <td>${getHasSupportEmoji(curr_attribute.value)}</td>
                     <#else>
-            <td>${curr_attribute.value}</td>
+            <td>${curr_attribute.value?string}</td>
                     </#if>
             </#list>
         </tr>

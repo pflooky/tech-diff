@@ -1,0 +1,78 @@
+name: Apache Avro
+description: Apache Avro is the leading serialization format for record data, and first choice for streaming data pipelines.
+logo: assets/logo/avro.png
+license: Apache license 2.0
+source_code: https://github.com/apache/avro
+website: https://avro.apache.org/
+year_created: 2009
+company: []
+language_support:
+  - java
+  - c++
+  - c#
+  - c
+  - python
+  - javascript
+  - perl
+  - ruby
+  - php
+  - rust
+use_cases:
+  - Stream processing
+  - Analytics
+  - Efficient data exchange
+file:
+  is_human_readable:
+    value: "no"
+  orientation:
+    value: row
+    source: https://orc.apache.org/specification/ORCv2/#motivation
+  has_type_system:
+    value: "yes"
+    source: https://avro.apache.org/docs/current/specification/#schema-declaration
+  has_nested_structure_support:
+    value: "yes"
+    source: https://avro.apache.org/docs/current/specification/#schema-declaration
+  has_native_compression:
+    value: "yes"
+    source: https://avro.apache.org/docs/current/specification/#object-container-files
+  has_encoding_support:
+    value: "yes"
+    source: https://avro.apache.org/docs/current/specification/#data-serialization-and-deserialization
+  has_constraint_support:
+    value: "no"
+  has_acid_support:
+    value: "no"
+  has_metadata:
+    value: "yes"
+    source: https://avro.apache.org/docs/current/specification/#object-container-files
+  has_encryption_support:
+    value: "no"
+  data_processing_framework_support:
+    - value: Apache Flink
+      source: https://nightlies.apache.org/flink/flink-docs-master/docs/connectors/table/formats/avro/
+    - value: Apache Gobblin
+      source: https://gobblin.apache.org/docs/sinks/AvroHdfsDataWriter/
+    - value: Apache NiFi
+      source: https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-record-serialization-services-nar/1.23.2/org.apache.nifi.avro.AvroReader/index.html
+    - value: Apache Pig
+      source: https://pig.apache.org/docs/r0.17.0/api/org/apache/pig/piggybank/storage/avro/AvroStorage.html
+    - value: Apache Spark
+      source: https://spark.apache.org/docs/latest/sql-data-sources-avro.html
+  analytics_query_support:
+    - value: Apache Impala
+      source: https://impala.apache.org/docs/build/html/topics/impala_avro.html
+    - value: Apache Druid
+      source: https://druid.apache.org/docs/latest/development/extensions-core/avro/
+    - value: Apache Hive
+      source: https://cwiki.apache.org/confluence/display/hive/avroserde
+    - value: Apache Pinot
+      source: https://docs.pinot.apache.org/basics/data-import/pinot-input-formats#avro
+    - value: AWS Athena
+      source: https://docs.aws.amazon.com/athena/latest/ug/supported-serdes.html
+    - value: BigQuery
+      source: https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro
+    - value: Clickhouse
+      source: https://github.com/ClickHouse/clickhouse-docs/blob/main/docs/en/integrations/data-ingestion/data-formats/arrow-avro-orc.md
+    - value: Firebolt
+      source: https://docs.firebolt.io/godocs/Guides/loading-data/working-with-external-tables.html#supported-file-formats

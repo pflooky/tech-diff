@@ -17,25 +17,27 @@ company: []
 use_cases: []
 file:
   is_human_readable:
-    value: true
+    value: "yes"
     source: https://www.rfc-editor.org/rfc/rfc4180.html
   orientation:
     value: row
     source: https://www.rfc-editor.org/rfc/rfc4180.html
   has_type_system:
-    value: false
+    value: "no"
   has_nested_structure_support:
-    value: false
+    value: "no"
   has_native_compression:
-    value: false
+    value: "no"
   has_encoding_support:
-    value: false
+    value: "no"
   has_constraint_support:
-    value: false
+    value: "no"
   has_acid_support:
-    value: false
+    value: "no"
   has_metadata:
-    value: false
+    value: "no"
+  has_encryption_support:
+    value: "no"
   data_processing_framework_support:
     - value: Apache Beam
       source: https://beam.apache.org/releases/javadoc/current/org/apache/beam/sdk/io/csv/CsvIO.html
@@ -54,5 +56,23 @@ file:
     - value: Apache Spark
       source: https://spark.apache.org/docs/latest/sql-data-sources-csv.html
   analytics_query_support:
+    - value: Apache Impala
+      source: https://impala.apache.org/docs/build/html/topics/impala_txtfile.html
+    - value: Apache Druid
+      source: https://druid.apache.org/docs/latest/ingestion/data-formats#csv
+    - value: Apache Pinot
+      source: https://docs.pinot.apache.org/basics/data-import/pinot-input-formats#csv
+    - value: AWS Athena
+      source: https://docs.aws.amazon.com/athena/latest/ug/supported-serdes.html
+    - value: Azure Synapse
+      source: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/query-single-csv-file
+    - value: BigQuery
+      source: https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv
     - value: Clickhouse
       source: https://github.com/ClickHouse/clickhouse-docs/blob/main/docs/en/integrations/data-ingestion/data-formats/csv-tsv.md
+    - value: Dremio
+      source: https://docs.dremio.com/current/sonar/query-manage/querying-data/files-and-directories/
+    - value: DuckDB
+      source: https://duckdb.org/docs/data/csv/overview
+    - value: Firebolt
+      source: https://docs.firebolt.io/godocs/Guides/loading-data/working-with-external-tables.html#supported-file-formats

@@ -1,0 +1,66 @@
+name: Apache Hudi
+description: Apache Hudi is a transactional data lake platform that brings database and data warehouse capabilities to the data lake. Utilises data stored in either parquet or orc.
+logo: assets/logo/hudi.png
+source_code: https://github.com/apache/hudi
+website: https://hudi.apache.org/
+license: Apache license 2.0
+year_created: 2016
+company:
+  - Uber
+use_cases:
+  - Incremental data processing
+  - Data upserts
+  - Change Data Capture (CDC)
+  - ACID transactions
+language_support: []
+file:
+  is_human_readable:
+    value: "no"
+  orientation:
+    value: column
+    source: https://hudi.apache.org/docs/configurations/#hoodietablebasefileformat
+  has_type_system:
+    value: "yes"
+    source: https://hudi.apache.org/docs/configurations/#hoodietablebasefileformat
+  has_nested_structure_support:
+    value: "yes"
+    source: https://hudi.apache.org/docs/configurations/#hoodietablebasefileformat
+  has_native_compression:
+    value: "yes"
+    source: https://hudi.apache.org/docs/configurations/#hoodietablebasefileformat
+  has_encoding_support:
+    value: "yes"
+    source: https://hudi.apache.org/docs/configurations/#hoodietablebasefileformat
+  has_constraint_support:
+    value: "yes"
+    source: https://hudi.apache.org/docs/precommit_validator
+  has_acid_support:
+    value: "yes"
+    source: https://hudi.apache.org/docs/use_cases/#acid-transactions
+  has_metadata:
+    value: "yes"
+    source: https://hudi.apache.org/docs/metadata
+  has_encryption_support:
+    value: "maybe"
+    source: https://hudi.apache.org/docs/encryption/
+    notes: "Implicitly supported by data stored as Parquet but no direct API to support encryption"
+  data_processing_framework_support:
+    - value: Apache Spark
+      source: https://hudi.apache.org/docs/integrations.html#apache-spark
+    - value: Apache Flink
+      source: https://hudi.apache.org/docs/flink-quick-start-guide
+  analytics_query_support:
+    - value: Apache Hive
+      source: https://hudi.apache.org/docs/syncing_metastore/
+    - value: Apache Impala
+      source: https://impala.apache.org/docs/build/html/topics/impala_hudi.html
+    - value: AWS Athena
+      source: https://docs.aws.amazon.com/athena/latest/ug/querying-hudi.html
+    - value: BigQuery
+      source: https://cloud.google.com/bigquery/docs/query-open-table-format-using-manifest-files
+    - value: Clickhouse
+      source: https://clickhouse.com/docs/en/engines/table-engines/integrations/hudi
+    - value: Presto
+      source: https://prestodb.io/docs/0.284/connector/hudi.html
+    - value: Trino
+      source: https://trino.io/docs/current/connector/hudi.html

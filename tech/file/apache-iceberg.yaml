@@ -1,5 +1,5 @@
 name: Apache Iceberg
-description: Iceberg is a high-performance format for huge analytic tables.
+description: Iceberg is a high-performance format for huge analytic tables. Utilises data stored in either parquet, avro, or orc.
 logo: assets/logo/iceberg.png
 license: Apache license 2.0
 source_code: https://github.com/apache/iceberg
@@ -15,25 +15,50 @@ use_cases:
   - ACID transactions
 file:
   is_human_readable:
-    value: false
+    value: "no"
   orientation:
     value: column
   has_type_system:
-    value: true
+    value: "yes"
+    source: https://iceberg.apache.org/docs/latest/schemas/
   has_nested_structure_support:
-    value: true
+    value: "yes"
+    source: https://iceberg.apache.org/docs/latest/schemas/
   has_native_compression:
-    value: true
+    value: "yes"
   has_encoding_support:
-    value: true
+    value: "yes"
   has_constraint_support:
-    value: false
+    value: "no"
+    source: https://iceberg.apache.org/docs/latest/reliability/
   has_acid_support:
-    value: true
+    value: "yes"
     source: https://iceberg.apache.org/docs/latest/reliability/
   has_metadata:
-    value: true
+    value: "yes"
+  has_encryption_support:
+    value: "maybe"
+    source: https://iceberg.apache.org/docs/latest/configuration/
+    notes: "Implicitly supported by data stored as Parquet/ORC but no direct API to support encryption"
   data_processing_framework_support:
     - value: Apache Drill
       source: https://drill.apache.org/docs/iceberg-format-plugin/
-  analytics_query_support: []
+  analytics_query_support:
+    - value: Apache Impala
+      source: https://impala.apache.org/docs/build/html/topics/impala_iceberg.html
+    - value: Apache Druid
+      source: https://github.com/apache/druid/blob/3a3d37ef40596b6540b6d30ac82a20766335627b/docs/development/extensions-contrib/iceberg.md#L2
+    - value: AWS Athena
+      source: https://docs.aws.amazon.com/athena/latest/ug/querying-iceberg.html
+    - value: BigQuery
+      source: https://cloud.google.com/bigquery/docs/query-iceberg-data
+    - value: Clickhouse
+      source: https://clickhouse.com/docs/en/engines/table-engines/integrations/iceberg
+    - value: Dremio
+      source: https://docs.dremio.com/current/sonar/query-manage/data-formats/apache-iceberg/
+    - value: DuckDB
+      source: https://duckdb.org/docs/extensions/iceberg.html
+    - value: Presto
+      source: https://prestodb.io/docs/0.284/connector/iceberg.html
+    - value: Trino
+      source: https://trino.io/docs/current/connector/iceberg.html

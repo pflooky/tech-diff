@@ -146,7 +146,7 @@
       "required": ["olap"]
     }
   ],
-  "required": ["name", "description", "logo", "source_code", "website", "license", "year_created", "company", "use_cases"],
+  "required": ["name", "description", "logo", "source_code", "website", "license", "year_created", "company", "use_cases", "language_support"],
   "$defs": {
     "DatabaseCategory": {
       "type": "object"
@@ -162,7 +162,7 @@
       "description": "Technology falls under category of file",
       "properties": {
         "is_human_readable": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format is human readable."
         },
         "orientation": {
@@ -182,32 +182,36 @@
           }
         },
         "has_type_system": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format checks and enforces column data types"
         },
         "has_nested_structure_support": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format supports nested column structures"
         },
         "has_native_compression": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format supports compressions algorithms natively (does not rely on external tools/commands)"
         },
         "has_encoding_support": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format supports using different encodings for data stored"
         },
         "has_constraint_support": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format supports column or table level constraints. An example could be a not null constraint."
         },
         "has_acid_support": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format supports ACID transactions (i.e. guarantee that the file will be in a consistent state after running a group of operations)."
         },
         "has_metadata": {
-          "$ref": "#/$defs/BooleanSource",
+          "$ref": "#/$defs/HasSupportSource",
           "description": "File format contains metadata about the file and it's contents. For example summary statistics such as min and max, record count, creation time, etc."
+        },
+        "has_encryption_support": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "File format supports encryption at file and/or column level."
         },
         "data_processing_framework_support": {
           "type": "array",
@@ -226,7 +230,7 @@
           }
         }
       },
-      "required": ["is_human_readable", "orientation", "has_type_system", "has_nested_structure_support", "has_native_compression", "has_encoding_support", "has_constraint_support", "has_acid_support", "has_metadata", "data_processing_framework_support", "analytics_query_support"]
+      "required": ["is_human_readable", "orientation", "has_type_system", "has_nested_structure_support", "has_native_compression", "has_encoding_support", "has_constraint_support", "has_acid_support", "has_metadata", "has_encryption_support", "data_processing_framework_support", "analytics_query_support"]
     },
     "JobOrchestrationCategory": {
       "type": "object"
@@ -265,23 +269,28 @@
       "pattern": "https://.*",
       "description": "Link to the source of this information"
     },
-    "BooleanSource": {
+    "HasSupportSource": {
       "type": "object",
       "properties": {
         "value": {
-          "type": "boolean"
+          "type": "string",
+          "enum": ["yes", "no", "maybe"]
         },
         "source": {
           "$ref": "#/$defs/Source"
+        },
+        "notes": {
+          "type": "string"
         }
-      }
+      },
+      "required": ["value"]
     },
     "DataProcessingFrameworkSupportSource": {
       "type": "object",
       "properties": {
         "value": {
           "type": "string",
-          "enum": ["Apache Spark", "Apache Drill", "Apache Hive", "Apache Hadoop", "Apache Pig", "Apache Storm", "Apache Flink", "Apache Beam", "Apache NiFi", "Apache Gobblin"]
+          "enum": ["Apache Spark", "Apache Drill", "Apache Hadoop", "Apache Pig", "Apache Storm", "Apache Flink", "Apache Beam", "Apache NiFi", "Apache Gobblin"]
         },
         "source": {
           "$ref": "#/$defs/Source"
@@ -293,7 +302,7 @@
       "properties": {
         "value": {
           "type": "string",
-          "enum": ["Apache Impala", "Apache Druid", "Apache Hive", "Presto", "Trino", "DuckDB", "AWS Athena", "Firebolt", "Clickhouse", "BigQuery", "Azure Synapse"]
+          "enum": ["Apache Druid", "Apache Hive", "Apache Impala", "Apache Pinot", "AWS Athena", "Azure Synapse", "BigQuery", "Clickhouse", "Dremio", "DuckDB", "Firebolt", "Presto", "Trino"]
         },
         "source": {
           "$ref": "#/$defs/Source"

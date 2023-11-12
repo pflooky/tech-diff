@@ -1,5 +1,13 @@
 .red-cross {
-    color: #d9534f;
+    color: #D9534F;
+}
+
+.maybe-minus {
+    color: #F28C28;
+}
+
+.green-tick {
+    color: #008000;
 }
 
 .md-header {

@@ -6,12 +6,6 @@ Compare all data related technologies with each other to find the best fit for y
 
 <div class="grid cards" markdown>
 
--   :material-database:{ .lg .middle } __[Databases](database/index.md)__
-
-    ---
-
-    Relational, non-relational, graph and vector databases.
-
 -   :material-file:{ .lg .middle } __[Files](file/index.md)__
 
     ---

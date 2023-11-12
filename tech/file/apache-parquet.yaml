@@ -22,41 +22,62 @@ use_cases:
   - Column based queries
 file:
   is_human_readable:
-    value: false
+    value: "no"
     source: https://parquet.apache.org/docs/file-format/
   orientation:
     value: column
     source: https://github.com/apache/parquet-format/blob/master/README.md
   has_type_system:
-    value: true
+    value: "yes"
     source: https://github.com/apache/parquet-format/blob/master/LogicalTypes.md
   has_nested_structure_support:
-    value: true
+    value: "yes"
     source: https://github.com/apache/parquet-format/blob/master/LogicalTypes.md
   has_native_compression:
-    value: true
+    value: "yes"
     source: https://github.com/apache/parquet-format/blob/master/Compression.md
   has_encoding_support:
-    value: true
+    value: "yes"
     source: https://github.com/apache/parquet-format/blob/master/Encodings.md
   has_constraint_support:
-    value: false
+    value: "no"
   has_acid_support:
-    value: false
+    value: "no"
   has_metadata:
-    value: true
+    value: "yes"
     source: https://github.com/apache/parquet-format/blob/master/Encodings.md
+  has_encryption_support:
+    value: "yes"
+    source: https://github.com/apache/parquet-format/blob/master/Encryption.md
   data_processing_framework_support:
     - value: Apache Beam
       source: https://beam.apache.org/documentation/io/built-in/parquet/
     - value: Apache Drill
       source: https://drill.apache.org/docs/parquet-format/
-    - value: Apache Hive
-      source: https://cwiki.apache.org/confluence/display/Hive/Parquet
     - value: Apache Flink
       source: https://nightlies.apache.org/flink/flink-docs-master/docs/connectors/table/formats/parquet/
     - value: Apache Spark
       source: https://spark.apache.org/docs/latest/sql-data-sources-parquet.html
   analytics_query_support:
+    - value: Apache Hive
+      source: https://cwiki.apache.org/confluence/display/Hive/Parquet
+    - value: Apache Impala
+      source: https://impala.apache.org/docs/build/html/topics/impala_parquet.html
+    - value: Apache Druid
+      source: https://druid.apache.org/docs/latest/ingestion/data-formats#parquet
+    - value: Apache Pinot
+      source: https://docs.pinot.apache.org/basics/data-import/pinot-input-formats#parquet
+    - value: AWS Athena
+      source: https://docs.aws.amazon.com/athena/latest/ug/supported-serdes.html
+    - value: Azure Synapse
+      source: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/query-parquet-files
+    - value: BigQuery
+      source: https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet
     - value: Clickhouse
       source: https://github.com/ClickHouse/clickhouse-docs/blob/main/docs/en/integrations/data-ingestion/data-formats/parquet.md
+    - value: Dremio
+      source: https://docs.dremio.com/current/sonar/query-manage/data-formats/parquet-files/
+    - value: DuckDB
+      source: https://duckdb.org/docs/data/parquet/overview
+    - value: Firebolt
+      source: https://docs.firebolt.io/godocs/Guides/loading-data/working-with-external-tables.html#supported-file-formats

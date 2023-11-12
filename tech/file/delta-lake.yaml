@@ -19,26 +19,44 @@ use_cases:
   - ACID transactions
 file:
   is_human_readable:
-    value: false
+    value: "no"
   orientation:
     value: column
   has_type_system:
-    value: true
+    value: "yes"
   has_nested_structure_support:
-    value: true
+    value: "yes"
   has_native_compression:
-    value: true
+    value: "yes"
   has_encoding_support:
-    value: true
+    value: "yes"
   has_constraint_support:
-    value: true
+    value: "yes"
     source: https://docs.delta.io/latest/delta-constraints.html
   has_acid_support:
-    value: true
+    value: "yes"
     source: https://docs.delta.io/latest/concurrency-control.html
   has_metadata:
-    value: true
+    value: "yes"
+  has_encryption_support:
+    value: "maybe"
+    source: https://docs.delta.io/latest/delta-faq.html#what-format-does-delta-lake-use-to-store-data
+    notes: "Implicitly supported by data stored as Parquet but no direct API to support encryption"
   data_processing_framework_support:
     - value: Apache Drill
       source: https://drill.apache.org/docs/delta-lake-format-plugin/
-  analytics_query_support: []
+  analytics_query_support:
+    - value: AWS Athena
+      source: https://docs.aws.amazon.com/athena/latest/ug/delta-lake-tables.html
+    - value: Azure Synapse
+      source: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/query-delta-lake-format
+    - value: BigQuery
+      source: https://cloud.google.com/bigquery/docs/query-open-table-format-using-manifest-files
+    - value: Clickhouse
+      source: https://clickhouse.com/docs/en/engines/table-engines/integrations/deltalake
+    - value: Dremio
+      source: https://docs.dremio.com/current/sonar/query-manage/data-formats/delta-lake
+    - value: Presto
+      source: https://prestodb.io/docs/0.284/connector/deltalake.html
+    - value: Trino
+      source: https://trino.io/docs/current/connector/delta-lake.html

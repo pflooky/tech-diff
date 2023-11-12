@@ -20,30 +20,33 @@ use_cases:
   - ACID transactions
 file:
   is_human_readable:
-    value: false
+    value: "no"
     source: https://orc.apache.org/specification/ORCv2/#motivation
   orientation:
     value: row
     source: https://orc.apache.org/specification/ORCv2/#motivation
   has_type_system:
-    value: true
+    value: "yes"
     source: https://orc.apache.org/docs/types.html
   has_nested_structure_support:
-    value: true
+    value: "yes"
     source: https://orc.apache.org/docs/types.html
   has_native_compression:
-    value: true
+    value: "yes"
     source: https://orc.apache.org/specification/ORCv2/#compression
   has_encoding_support:
-    value: true
+    value: "yes"
     source: https://orc.apache.org/specification/ORCv2/#run-length-encoding
   has_constraint_support:
-    value: false
+    value: "no"
   has_acid_support:
-    value: false
+    value: "no"
   has_metadata:
-    value: true
+    value: "yes"
     source: https://orc.apache.org/specification/ORCv2/#postscript
+  has_encryption_support:
+    value: "yes"
+    source: https://orc.apache.org/specification/ORCv1/#column-encryption
   data_processing_framework_support:
     - value: Apache Flink
       source: https://orc.apache.org/docs/adopters.html
@@ -64,9 +67,17 @@ file:
       source: https://orc.apache.org/docs/adopters.html
     - value: Apache Hive
       source: https://orc.apache.org/docs/adopters.html
-    - value: Trino
-      source: https://orc.apache.org/docs/adopters.html
-    - value: Presto
-      source: https://orc.apache.org/docs/adopters.html
+    - value: Apache Pinot
+      source: https://docs.pinot.apache.org/basics/data-import/pinot-input-formats#orc
+    - value: AWS Athena
+      source: https://docs.aws.amazon.com/athena/latest/ug/supported-serdes.html
+    - value: BigQuery
+      source: https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-orc
     - value: Clickhouse
       source: https://github.com/ClickHouse/clickhouse-docs/blob/main/docs/en/integrations/data-ingestion/data-formats/arrow-avro-orc.md
+    - value: Firebolt
+      source: https://docs.firebolt.io/godocs/Guides/loading-data/working-with-external-tables.html#supported-file-formats
+    - value: Presto
+      source: https://orc.apache.org/docs/adopters.html
+    - value: Trino
+      source: https://orc.apache.org/docs/adopters.html
