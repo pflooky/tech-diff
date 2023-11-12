@@ -41,18 +41,15 @@ document$.subscribe(function() {
                 // Toggle the visibility of the column
                 column.visible(!isColVisible);
                 // Toggle the highlighting of the button
-                if (el.classList.contains("md-button-column-visible")) {
-                    el.classList.remove("md-button-column-visible");
-                } else {
-                    el.classList.add("md-button-column-visible");
-                }
+                el.classList.toggle("md-button-selected");
+                el.blur();
             });
         });
 
         // Toggle on the visible buttons
         document.querySelectorAll(".md-button.toggle-vis").forEach((el) => {
             if (parseInt(el.getAttribute("data-column")) < 4) {
-                el.classList.add("md-button-column-visible");
+                el.classList.toggle("md-button-selected");
             }
         });
 
