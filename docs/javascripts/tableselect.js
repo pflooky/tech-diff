@@ -23,11 +23,13 @@ document$.subscribe(function() {
     const tables = document.querySelectorAll("table");
     tables.forEach(function(table) {
         const dataTable = new DataTable(table, {
+            dom: "Bfrtip",
             ordering: false,
             paging: false,
             autoWidth: true,
-            fixedHeader: true
-        })
+            fixedHeader: true,
+            buttons: ['copy', 'csv', 'excel', 'pdf']
+        });
 
         document.querySelectorAll("a.toggle-vis").forEach((el) => {
             el.addEventListener('click', function (e) {

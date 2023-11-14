@@ -46,11 +46,21 @@ file:
   data_processing_framework_support:
     - value: Apache Drill
       source: https://drill.apache.org/docs/iceberg-format-plugin/
+    - value: Apache Flink
+      source: https://iceberg.apache.org/contribute/
+    - value: Apache Gobblin
+      source: https://github.com/apache/gobblin/tree/master/gobblin-iceberg
+    - value: Apache Pig
+      source: https://iceberg.apache.org/contribute/
+    - value: Apache Spark
+      source: https://iceberg.apache.org/spark-quickstart/
   analytics_query_support:
     - value: Apache Impala
       source: https://impala.apache.org/docs/build/html/topics/impala_iceberg.html
     - value: Apache Druid
       source: https://github.com/apache/druid/blob/3a3d37ef40596b6540b6d30ac82a20766335627b/docs/development/extensions-contrib/iceberg.md#L2
+    - value: Apache Hive
+      source: https://iceberg.apache.org/contribute/
     - value: AWS Athena
       source: https://docs.aws.amazon.com/athena/latest/ug/querying-iceberg.html
     - value: BigQuery

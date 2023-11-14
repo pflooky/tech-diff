@@ -20,16 +20,22 @@ use_cases:
 file:
   is_human_readable:
     value: "no"
+    source: https://github.com/delta-io/delta/blob/master/PROTOCOL.md#file-types
   orientation:
     value: column
+    source: https://github.com/delta-io/delta/blob/master/PROTOCOL.md#file-types
   has_type_system:
     value: "yes"
+    source: https://github.com/delta-io/delta/blob/master/PROTOCOL.md#Schema-Serialization-Format
   has_nested_structure_support:
     value: "yes"
+    source: https://github.com/delta-io/delta/blob/master/PROTOCOL.md#Schema-Serialization-Format
   has_native_compression:
     value: "yes"
+    source: https://github.com/delta-io/delta/blob/master/PROTOCOL.md#file-types
   has_encoding_support:
     value: "yes"
+    source: https://github.com/delta-io/delta/blob/master/PROTOCOL.md#file-types
   has_constraint_support:
     value: "yes"
     source: https://docs.delta.io/latest/delta-constraints.html
@@ -38,6 +44,7 @@ file:
     source: https://docs.delta.io/latest/concurrency-control.html
   has_metadata:
     value: "yes"
+    source: https://github.com/delta-io/delta/blob/master/PROTOCOL.md#actions
   has_encryption_support:
     value: "maybe"
     source: https://docs.delta.io/latest/delta-faq.html#what-format-does-delta-lake-use-to-store-data
@@ -45,7 +52,13 @@ file:
   data_processing_framework_support:
     - value: Apache Drill
       source: https://drill.apache.org/docs/delta-lake-format-plugin/
+    - value: Apache Flink
+      source: https://github.com/delta-io/delta/tree/master/connectors/flink/
+    - value: Apache Spark
+      source: https://docs.delta.io/latest/quick-start.html#set-up-apache-spark-with-delta-lake
   analytics_query_support:
+    - value: Apache Hive
+      source: https://github.com/delta-io/delta/tree/master/connectors/hive
     - value: AWS Athena
       source: https://docs.aws.amazon.com/athena/latest/ug/delta-lake-tables.html
     - value: Azure Synapse

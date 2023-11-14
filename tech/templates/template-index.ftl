@@ -8,14 +8,21 @@
     <span class="twemoji red-cross"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12 6.47 2 12 2m3.59 5L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41 15.59 7Z"></path></svg></span>
 </#assign>
 <#function getHasSupportEmoji attribute>
-    <#if attribute == "yes">
-        <#return greenTick>
-    <#elseif attribute == "maybe">
-        <#return maybeMinus>
-    <#elseif attribute == "no">
-        <#return redCross>
+    <#assign textForDownload>
+        <#if attribute.source?has_content>
+            <div href="${attribute.source}" style="display: none">${attribute.value}</div>
+        <#else>
+            <div style="display: none">${attribute.value}</div>
+        </#if>
+    </#assign>
+    <#if attribute.value == "yes">
+        <#return greenTick + textForDownload>
+    <#elseif attribute.value == "maybe">
+        <#return maybeMinus + textForDownload>
+    <#elseif attribute.value == "no">
+        <#return redCross + textForDownload>
     <#else>
-        <#return attribute>
+        <#return attribute.value>
     </#if>
 </#function>
 ---
@@ -75,15 +82,15 @@ hide:
                         </#list>
             </td>
                     <#elseif curr_attribute.value?has_content && curr_attribute.source?has_content && curr_attribute.notes?has_content>
-            <td><a href="${curr_attribute.source}" title="${curr_attribute.notes}">${getHasSupportEmoji(curr_attribute.value)}</a></td>
+            <td><a href="${curr_attribute.source}" title="${curr_attribute.notes}">${getHasSupportEmoji(curr_attribute)}</a></td>
                     <#elseif curr_attribute.value?has_content && curr_attribute.source?has_content>
-            <td><a href="${curr_attribute.source}">${getHasSupportEmoji(curr_attribute.value)}</a></td>
+            <td><a href="${curr_attribute.source}">${getHasSupportEmoji(curr_attribute)}</a></td>
                     <#elseif curr_attribute.value?has_content && curr_attribute.value?is_sequence && curr_attribute.source?has_content>
             <td><a href="${curr_attribute.source}">${curr_attribute.value?join(", ")}</a></td>
                     <#elseif curr_attribute.value?is_sequence>
             <td>${curr_attribute.value?join(", ")}</td>
                     <#elseif curr_attribute.value?is_string>
-            <td>${getHasSupportEmoji(curr_attribute.value)}</td>
+            <td>${getHasSupportEmoji(curr_attribute)}</td>
                     <#else>
             <td>${curr_attribute.value?string}</td>
                     </#if>

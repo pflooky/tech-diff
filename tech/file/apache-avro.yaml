@@ -5,7 +5,8 @@ license: Apache license 2.0
 source_code: https://github.com/apache/avro
 website: https://avro.apache.org/
 year_created: 2009
-company: []
+company:
+  - Apache
 language_support:
   - java
   - c++
