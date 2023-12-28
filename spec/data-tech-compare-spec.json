@@ -234,7 +234,47 @@
       "required": ["is_human_readable", "orientation", "has_type_system", "has_nested_structure_support", "has_native_compression", "has_encoding_support", "has_constraint_support", "has_acid_support", "has_metadata", "has_encryption_support", "data_processing_framework_support", "analytics_query_support"]
     },
     "JobOrchestrationCategory": {
-      "type": "object"
+      "type": "object",
+      "description": "Job orchestration technology",
+      "properties": {
+        "has_cron_schedule_support": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Supports defining cron schedules for jobs"
+        },
+        "has_event_based_trigger_support": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Supports jobs being triggered from events"
+        },
+        "has_api_support": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Defines an API from which you can retrieve information about the job orchestrator"
+        },
+        "has_access_controls": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Ability to define access controls for users of the job orchestrator"
+        },
+        "has_workflow_versioning": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Ability to define different versions of the same workflow"
+        },
+        "has_workflow_configuration_support": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Ability to define configuration to inject into workflows to alter their behaviour"
+        },
+        "has_audit_logs": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Maintains an audit trail of what actions the system or users have taken"
+        },
+        "has_cost_tracking": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Ability to track costs of workflows"
+        },
+        "has_data_source_connection_support": {
+          "$ref": "#/$defs/HasSupportSource",
+          "description": "Ability to define and manage connections to data sources"
+        }
+      },
+      "required": ["has_cron_schedule_support", "has_event_based_trigger_support", "has_api_support", "has_access_controls", "has_workflow_versioning", "has_workflow_configuration_support", "has_audit_logs", "has_cost_tracking", "has_data_source_connection_support"]
     },
     "MessagingCategory": {
       "type": "object"

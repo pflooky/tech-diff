@@ -37,10 +37,6 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 
-nav:
-  - Home: 'index.md'
-  - File: 'file/index.md'
-
 extra_javascript:
   - https://code.jquery.com/jquery-3.7.0.js
   - https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js
@@ -81,3 +77,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+
+nav:
+  - Home: 'index.md'
+  - File: 'file/index.md'
+  - Job orchestration: 'job-orchestration/index.md'

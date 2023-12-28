@@ -1,0 +1,40 @@
+name: Apache Airflow
+description: Apache Airflow is a platform to programmatically author, schedule, and monitor workflows.
+logo: assets/logo/airflow.png
+license: Apache license 2.0
+source_code: https://github.com/apache/airflow
+website: https://airflow.apache.org/
+year_created: 2014
+company:
+  - Airbnb
+  - Apache
+language_support:
+  - python
+use_cases:
+  - Workflow scheduling
+job_orchestration:
+  has_cron_schedule_support:
+    value: yes
+    source: https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dag-run.html#cron-presets
+  has_event_based_trigger_support:
+    value: yes
+    source: https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html#operation/post_dag_run
+  has_api_support:
+    value: yes
+    source: https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html#section/Overview
+  has_access_controls:
+    value: yes
+    source: https://airflow.apache.org/docs/apache-airflow/stable/security/access-control.html
+  has_workflow_versioning:
+    value: no
+  has_workflow_configuration_support:
+    value: yes
+    source: https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/params.html
+  has_audit_logs:
+    value: yes
+    source: https://airflow.apache.org/docs/apache-airflow/stable/security/audit_logs.html
+  has_cost_tracking:
+    value: no
+  has_data_source_connection_support:
+    value: yes
+    source: https://airflow.apache.org/docs/apache-airflow/stable/howto/connection.html

@@ -35,26 +35,41 @@ tasks.register("generate") {
         cfg.setDefaultEncoding("UTF-8")
         var template = cfg.getTemplate("template-index.ftl")
 
-        techTypes.forEach { tech ->
-            var baseDir = new File("tech/$tech")
-            var root = new HashMap()
-            var innerTechTypes = new ArrayList()
+        new File("$workingDir/tech").eachFileRecurse(groovy.io.FileType.DIRECTORIES) { dir ->
+            if (dir.name != "templates") {
+                var tech = dir.name
+                var baseDir = new File("tech/$tech")
+                var root = new HashMap()
+                var innerTechTypes = new ArrayList()
 
-            baseDir.traverse(type: FILES, sort: sortByName) { file ->
-                var parsedYaml = yaml.load(file.getText())
-                println("Processing: ${parsedYaml["name"]}")
-                root.put(parsedYaml["name"], parsedYaml)
-                innerTechTypes.add(parsedYaml["name"])
+                baseDir.traverse(type: FILES, sort: sortByName) { file ->
+                    var parsedYaml = yaml.load(file.getText())
+                    println("Processing: ${parsedYaml["name"]}")
+                    root.put(parsedYaml["name"], parsedYaml)
+                    innerTechTypes.add(parsedYaml["name"])
+                }
+                root.put("high_level_tech_name", tech)
+                root.put("tech_types", innerTechTypes)
+                var outFile = new File("$workingDir/docs/$tech/index.md")
+                if (!outFile.parentFile.exists()) {
+                    outFile.parentFile.mkdirs()
+                }
+                if (!outFile.exists()) {
+                    outFile.createNewFile()
+                }
+                var out = new FileWriter(outFile)
+                template.process(root, out)
+                out.close()
+
+                var mkdocsFile = new File("$workingDir/mkdocs.yml")
+                if (!mkdocsFile.text.contains("'$tech/index.md'")) {
+                    var cleanTechName = tech.replace("-", " ").capitalize()
+                    var updatedMkdocs = mkdocsFile.text.concat("\n  - $cleanTechName: '$tech/index.md'")
+                    var mkdocsOut = new FileWriter(mkdocsFile)
+                    mkdocsOut.write(updatedMkdocs)
+                    mkdocsOut.close()
+                }
             }
-            root.put("main_tech", tech)
-            root.put("tech_types", innerTechTypes)
-            var outFile = new File("$workingDir/docs/$tech/index.md")
-            if (!outFile.exists()) {
-                outFile.createNewFile()
-            }
-            var out = new FileWriter(outFile)
-            template.process(root, out)
-            out.close()
         }
     }
 }

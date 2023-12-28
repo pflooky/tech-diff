@@ -30,7 +30,7 @@ hide:
 - navigation
 - toc
 ---
-# ${main_tech?cap_first}
+# ${high_level_tech_name?replace("-", " ")?cap_first}
 
 <#list tech_types as tech>
     <#assign curr_tech_logo=.vars[tech].logo>
@@ -50,7 +50,7 @@ hide:
     </thead>
     <tbody>
 <#list tech_attributes as attribute>
-        <#if attribute != main_tech && attribute != "logo">
+        <#if attribute != high_level_tech_name && attribute != "logo">
         <tr>
             <td><b>${attribute?replace("_", " ")?cap_first}</b></td>
             <#list tech_types as tech>
@@ -68,13 +68,13 @@ hide:
                 </#if>
             </#list>
         </tr>
-        <#elseif attribute == main_tech>
+        <#elseif attribute == high_level_tech_name>
             <#assign inner_tech_attributes=.vars[tech_types[0]][attribute]?keys>
             <#list inner_tech_attributes as inner_attribute>
         <tr>
             <td><b>${inner_attribute?replace("_", " ")?cap_first}</b></td>
                 <#list tech_types as tech>
-                    <#assign curr_attribute=.vars[tech][main_tech][inner_attribute]>
+                    <#assign curr_attribute=.vars[tech][high_level_tech_name][inner_attribute]>
                     <#if curr_attribute?is_sequence>
             <td>
                         <#list curr_attribute as inner_curr_attr>

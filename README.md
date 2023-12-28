@@ -19,6 +19,17 @@ Compare different technologies. No BS and all sources linked.
 5. Run `mkdocs build` to generate site
 6. Open [site/index.html](site/index.html) to see result
 
+Step 1 and 2  => Base data of different technologies
+Step 3-6      => Generate UI
+
+### JSON Schema
+
+JSON Schema for tech-diff can be found [here](spec/data-tech-compare-spec.json). You can import this schema into your IDE for
+validation of your YAML files. Links below show how you can import the schema:
+
+- [Intellij](https://www.jetbrains.com/help/idea/json.html#ws_json_schema_add_custom)
+- [VSCode](https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings)
+
 ## How to contribute
 
 - Add new high level type of technology (i.e. databases, object stores, messaging system)
@@ -89,6 +100,7 @@ project itself (either from documentation or source code).
   - SodaCL
   - Pydantic
   - Deequ
+  - Great Expectations
 
 ## Cloud Providers
 
