@@ -1,0 +1,42 @@
+name: Prefect
+description: A modern data workflow management system.
+logo: assets/logo/prefect.svg
+source_code: https://github.com/PrefectHQ/prefect
+website: https://www.prefect.io/
+license: MIT
+year_created: 2018
+company:
+  - Prefect
+use_cases:
+  - Data Workflow Management
+  - ETL
+language_support:
+  - python
+job_orchestration:
+  has_cron_schedule_support:
+    value: "yes"
+    notes: Prefect supports defining cron schedules for jobs.
+  has_event_based_trigger_support:
+    value: "yes"
+    notes: Prefect supports jobs being triggered from events.
+  has_api_support:
+    value: "yes"
+    notes: Prefect defines an API from which you can retrieve information about the job orchestrator.
+  has_access_controls:
+    value: "yes"
+    notes: Ability to define access controls for users of the job orchestrator in Prefect.
+  has_workflow_versioning:
+    value: "yes"
+    notes: Prefect allows the definition of different versions of the same workflow.
+  has_workflow_configuration_support:
+    value: "yes"
+    notes: Prefect supports defining configuration to inject into workflows to alter their behavior.
+  has_audit_logs:
+    value: "yes"
+    notes: Maintains an audit trail of actions taken by the system or users in Prefect.
+  has_cost_tracking:
+    value: "no"
+    notes: Prefect does not provide native features for tracking costs of workflows.
+  has_data_source_connection_support:
+    value: "yes"
+    notes: Ability to define and manage connections to data sources in Prefect.

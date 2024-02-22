@@ -1,0 +1,42 @@
+name: Mage
+description: A lightweight and flexible job orchestration tool.
+logo: assets/logo/mage.svg
+source_code: https://github.com/mage-ai/mage-ai
+website: https://www.mage.ai/
+license: Apache license 2.0
+year_created: 2019
+company:
+  - Mage
+use_cases:
+  - Task Automation
+  - Workflow Management
+language_support:
+  - python
+job_orchestration:
+  has_cron_schedule_support:
+    value: "yes"
+    notes: Mage supports defining cron schedules for jobs.
+  has_event_based_trigger_support:
+    value: "no"
+    notes: Mage does not have explicit support for jobs being triggered from events.
+  has_api_support:
+    value: "no"
+    notes: Mage does not define an API for retrieving information about the job orchestrator.
+  has_access_controls:
+    value: "no"
+    notes: Mage does not provide explicit features for defining access controls.
+  has_workflow_versioning:
+    value: "no"
+    notes: Mage does not provide explicit features for defining different versions of the same workflow.
+  has_workflow_configuration_support:
+    value: "yes"
+    notes: Mage supports defining configuration to alter the behavior of workflows.
+  has_audit_logs:
+    value: "no"
+    notes: Mage does not maintain explicit audit logs of actions taken by the system or users.
+  has_cost_tracking:
+    value: "no"
+    notes: Mage does not provide native features for tracking costs of workflows.
+  has_data_source_connection_support:
+    value: "no"
+    notes: Mage does not provide explicit features for defining and managing connections to data sources.

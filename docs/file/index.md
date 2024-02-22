@@ -2,6 +2,8 @@
 hide:
 - navigation
 - toc
+title: "Compare File technologies/tools"
+description: "Compare File technologies/tools by features. Includes Apache Avro vs Apache Hudi vs Apache Iceberg vs Apache ORC vs Apache Parquet vs CSV vs Delta Lake."
 ---
 # File
 

@@ -29,8 +29,10 @@
 hide:
 - navigation
 - toc
+title: "Compare ${high_level_tech_name?replace("_", " ")?cap_first} technologies/tools"
+description: "Compare ${high_level_tech_name?replace("_", " ")?cap_first} technologies/tools by features. Includes ${tech_types?join(" vs ")}."
 ---
-# ${high_level_tech_name?replace("-", " ")?cap_first}
+# ${high_level_tech_name?replace("_", " ")?cap_first}
 
 <#list tech_types as tech>
     <#assign curr_tech_logo=.vars[tech].logo>

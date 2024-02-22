@@ -1,6 +1,11 @@
+---
+title: "Compare Different Technologies/Tools"
+description: "Compare technologies/tools by features. Covers file types, job orchestration tools and more."
+---
+
 # Tech Compare
 
-Compare technologies with each other to find the best fit for you and your use case.
+Compare technologies/tools with each other to find the best fit for you and your use case.
 
 ## Categories
 
@@ -12,7 +17,7 @@ Compare technologies with each other to find the best fit for you and your use c
 
     CSV, Parquet, ORC, JSON, Avro, etc.
 
--   :octicons-tasklist-16:{ .lg .middle } __[Job orchestration](job-orchestration/index.md)__
+-   :octicons-tasklist-16:{ .lg .middle } __[Job orchestration](job_orchestration/index.md)__
 
     ---
 

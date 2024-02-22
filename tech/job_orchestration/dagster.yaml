@@ -1,0 +1,51 @@
+name: Dagster
+description: A data orchestrator for machine learning, analytics, and ETL.
+logo: assets/logo/dagster.png
+source_code: https://github.com/dagster-io/dagster
+website: https://dagster.io/
+license: Apache license 2.0
+year_created: 2019
+company:
+  - Dagster
+use_cases:
+  - Data Orchestration
+  - Machine Learning Pipelines
+language_support:
+  - python
+job_orchestration:
+  has_cron_schedule_support:
+    value: "yes"
+    source: https://docs.dagster.io/concepts/partitions-schedules-sensors/schedules
+    notes: Dagster supports defining cron schedules for jobs.
+  has_event_based_trigger_support:
+    value: "yes"
+    source: https://docs.dagster.io/concepts/sensors/intro
+    notes: Dagster supports jobs being triggered from events.
+  has_api_support:
+    value: "yes"
+    source: https://docs.dagster.io/concepts/schedules-sensors/partitioned-schedules
+    notes: Dagster defines an API from which you can retrieve information about the job orchestrator.
+  has_access_controls:
+    value: "yes"
+    source: https://docs.dagster.io/concepts/partitions-schedules-sensors/schedules#permissions
+    notes: Ability to define access controls for users of the job orchestrator in Dagster.
+  has_workflow_versioning:
+    value: "yes"
+    source: https://docs.dagster.io/overview/versioning
+    notes: Dagster allows the definition of different versions of the same workflow.
+  has_workflow_configuration_support:
+    value: "yes"
+    source: https://docs.dagster.io/concepts/solids/solid-config#configuration-schema
+    notes: Dagster supports defining configuration to inject into workflows to alter their behavior.
+  has_audit_logs:
+    value: "yes"
+    source: https://docs.dagster.io/concepts/logs
+    notes: Maintains an audit trail of actions taken by the system or users in Dagster.
+  has_cost_tracking:
+    value: "no"
+    source: https://docs.dagster.io/overview/costs
+    notes: Dagster does not provide native features for tracking costs of workflows.
+  has_data_source_connection_support:
+    value: "no"
+    source: https://docs.dagster.io/overview/data-sources
+    notes: Dagster does not provide native features for defining and managing connections to data sources.

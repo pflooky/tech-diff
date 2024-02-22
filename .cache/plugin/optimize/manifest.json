@@ -1,0 +1,11 @@
+{
+  "assets/logo/avro.png": "0f729702e50491d3edf3248ef0431c01c94aa758",
+  "assets/logo/hudi.png": "f5cb44983753303ce9bf582117e273df49947a28",
+  "assets/logo/airflow.png": "77320873da884ca9c4a01786ce0562825a75422b",
+  "assets/logo/dagster.png": "3cef5327e5082f71fb3674ffff92b3f01cc3079d",
+  "assets/images/favicon.png": "50c4fb6c0d449e6c8c07bd9bfbdea32b4e02b09a",
+  "assets/logo/iceberg.png": "3f49b10d2bacb6fc4b9d77f6500ecd223823c432",
+  "assets/logo/csv.png": "1d2bb4238239bdbdcc1e936f47591170280de9cd",
+  "assets/logo/orc.png": "7ac0de96110babf9d60512ee39e668065c5667fd",
+  "assets/logo/delta_lake.png": "3167c7920f5fbf81edfe30770fca5d34b4edcd18"
+}

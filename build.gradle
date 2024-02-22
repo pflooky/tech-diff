@@ -63,7 +63,7 @@ tasks.register("generate") {
 
                 var mkdocsFile = new File("$workingDir/mkdocs.yml")
                 if (!mkdocsFile.text.contains("'$tech/index.md'")) {
-                    var cleanTechName = tech.replace("-", " ").capitalize()
+                    var cleanTechName = tech.replace("_", " ").capitalize()
                     var updatedMkdocs = mkdocsFile.text.concat("\n  - $cleanTechName: '$tech/index.md'")
                     var mkdocsOut = new FileWriter(mkdocsFile)
                     mkdocsOut.write(updatedMkdocs)

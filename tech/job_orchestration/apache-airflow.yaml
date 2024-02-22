@@ -14,27 +14,27 @@ use_cases:
   - Workflow scheduling
 job_orchestration:
   has_cron_schedule_support:
-    value: yes
+    value: "yes"
     source: https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dag-run.html#cron-presets
   has_event_based_trigger_support:
-    value: yes
+    value: "yes"
     source: https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html#operation/post_dag_run
   has_api_support:
-    value: yes
+    value: "yes"
     source: https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html#section/Overview
   has_access_controls:
-    value: yes
+    value: "yes"
     source: https://airflow.apache.org/docs/apache-airflow/stable/security/access-control.html
   has_workflow_versioning:
-    value: no
+    value: "no"
   has_workflow_configuration_support:
-    value: yes
+    value: "yes"
     source: https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/params.html
   has_audit_logs:
-    value: yes
+    value: "yes"
     source: https://airflow.apache.org/docs/apache-airflow/stable/security/audit_logs.html
   has_cost_tracking:
-    value: no
+    value: "no"
   has_data_source_connection_support:
-    value: yes
+    value: "yes"
     source: https://airflow.apache.org/docs/apache-airflow/stable/howto/connection.html
