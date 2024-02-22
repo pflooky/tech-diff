@@ -1,0 +1,25 @@
+.red-cross {
+    color: #D9534F;
+}
+
+.maybe-minus {
+    color: #F28C28;
+}
+
+.green-tick {
+    color: #008000;
+}
+
+.md-header {
+    position: unset;
+}
+
+.sorting_disabled {
+    font-size: 0.8rem;
+}
+
+.md-button-selected, .md-button:focus {
+    background-color: var(--md-accent-fg-color) !important;
+    border-color: white !important;
+    color: var(--md-accent-bg-color) !important;
+}
