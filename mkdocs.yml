@@ -43,14 +43,22 @@ theme:
         name: Switch to system preference
 
 extra_javascript:
-  - https://code.jquery.com/jquery-3.7.0.js
-  - https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js
-  - https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js
-  - https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js
-  - https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js
+  - path: https://code.jquery.com/jquery-3.7.0.js
+    defer: true
+  - path: https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js
+    defer: true
+  - path: https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js
+    defer: true
+  - path: https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js
+    defer: true
+  - path: https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js
+    defer: true
+  - path: https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js
+    defer: true
+  - path: https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js
+    defer: true
+  - path: https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js
+    defer: true
   - javascripts/tableselect.js
 
 extra_css:
