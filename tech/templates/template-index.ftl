@@ -26,16 +26,23 @@
     </#if>
 </#function>
 ---
+<#if compare_two_tech??>
+<#else>
 hide:
 - navigation
 - toc
+</#if>
 title: "Compare ${high_level_tech_name?replace("_", " ")?cap_first} technologies/tools"
 description: "Compare ${high_level_tech_name?replace("_", " ")?cap_first} technologies/tools by features. Includes ${tech_types?join(" vs ")}."
 ---
 # ${high_level_tech_name?replace("_", " ")?cap_first}
 
 <#list tech_types as tech>
-    <#assign curr_tech_logo=.vars[tech].logo>
+    <#if compare_two_tech??>
+        <#assign curr_tech_logo="../" + .vars[tech].logo>
+    <#else>
+        <#assign curr_tech_logo=.vars[tech].logo>
+    </#if>
 [![${tech} logo](../${curr_tech_logo}){: style="height:30px;width:30px" .lg align-left } ${tech}](){ .md-button .toggle-vis data-column="${tech?counter}" }
 </#list>
 

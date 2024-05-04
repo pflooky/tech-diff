@@ -26,21 +26,24 @@ tasks.register("generate") {
             a.name <=> b.name
         }
 
-        List<String> techTypes = List.of("file")
         LoaderOptions loaderOptions = new LoaderOptions()
         Yaml yaml = new Yaml(loaderOptions)
         var workingDir = "${rootProject.projectDir.absolutePath}"
         freemarker.template.Configuration cfg = new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_32)
         cfg.setDirectoryForTemplateLoading(new File("$workingDir/tech/templates"))
         cfg.setDefaultEncoding("UTF-8")
-        var template = cfg.getTemplate("template-index.ftl")
+        var baseTechTemplate = cfg.getTemplate("template-index.ftl")
+        //update mkdocs file by getting the 'nav:' section and writing the updated site structure
+        var baseNavSection = "nav:\n  - Home: 'index.md'\n"
 
         new File("$workingDir/tech").eachFileRecurse(groovy.io.FileType.DIRECTORIES) { dir ->
             if (dir.name != "templates") {
                 var tech = dir.name
+                var cleanTechName = tech.replace("_", " ").capitalize()
                 var baseDir = new File("tech/$tech")
                 var root = new HashMap()
                 var innerTechTypes = new ArrayList()
+                baseNavSection += "  - $cleanTechName:\n    - '$tech/index.md'\n"
 
                 baseDir.traverse(type: FILES, sort: sortByName) { file ->
                     var parsedYaml = yaml.load(file.getText())
@@ -50,26 +53,56 @@ tasks.register("generate") {
                 }
                 root.put("high_level_tech_name", tech)
                 root.put("tech_types", innerTechTypes)
-                var outFile = new File("$workingDir/docs/$tech/index.md")
-                if (!outFile.parentFile.exists()) {
-                    outFile.parentFile.mkdirs()
+
+                // main file with all tech comparisons
+                var baseTechOutFile = new File("$workingDir/docs/$tech/index.md")
+                if (!baseTechOutFile.parentFile.exists()) {
+                    baseTechOutFile.parentFile.mkdirs()
                 }
-                if (!outFile.exists()) {
-                    outFile.createNewFile()
+                if (!baseTechOutFile.exists()) {
+                    baseTechOutFile.createNewFile()
                 }
-                var out = new FileWriter(outFile)
-                template.process(root, out)
+                var out = new FileWriter(baseTechOutFile)
+                baseTechTemplate.process(root, out)
                 out.close()
 
-                var mkdocsFile = new File("$workingDir/mkdocs.yml")
-                if (!mkdocsFile.text.contains("'$tech/index.md'")) {
-                    var cleanTechName = tech.replace("_", " ").capitalize()
-                    var updatedMkdocs = mkdocsFile.text.concat("\n  - $cleanTechName: '$tech/index.md'")
-                    var mkdocsOut = new FileWriter(mkdocsFile)
-                    mkdocsOut.write(updatedMkdocs)
-                    mkdocsOut.close()
-                }
+                // sub files with comparison with each pair
+                innerTechTypes.forEach(techType -> {
+                    baseNavSection += "    - $techType:\n"
+                    innerTechTypes.forEach(techType2 -> {
+                        var techTypeName = techType.toLowerCase().replaceAll(" ", "_")
+                        var techType2Name = techType2.toLowerCase().replaceAll(" ", "_")
+                        if (techTypeName != techType2Name) {
+                            baseNavSection += "      - $techType2: '$tech/$techTypeName/${techType2Name}.md'\n"
+
+                            var compareRoot = new HashMap()
+                            compareRoot.put("compare_two_tech", true)
+                            compareRoot.put("high_level_tech_name", tech)
+                            compareRoot.put("tech_types", [techType, techType2])
+                            compareRoot.put(techType, root[techType])
+                            compareRoot.put(techType2, root[techType2])
+
+                            var compareTwoOutFile = new File("$workingDir/docs/$tech/$techTypeName/${techType2Name}.md")
+                            if (!compareTwoOutFile.parentFile.exists()) {
+                                compareTwoOutFile.parentFile.mkdirs()
+                            }
+                            if (!compareTwoOutFile.exists()) {
+                                compareTwoOutFile.createNewFile()
+                            }
+                            var compareOut = new FileWriter(compareTwoOutFile)
+                            baseTechTemplate.process(compareRoot, compareOut)
+                            compareOut.close()
+                        }
+                    })
+                })
             }
         }
+
+        //update mkdocs file nav section with baseNavSection that will have updated site structure
+        var mkdocsFile = new File("$workingDir/mkdocs.yml")
+        var updatedMkdocs = mkdocsFile.text.replaceAll(/(?ms)nav:.*/, baseNavSection)
+        var mkdocsOut = new FileWriter(mkdocsFile)
+        mkdocsOut.write(updatedMkdocs)
+        mkdocsOut.close()
     }
 }

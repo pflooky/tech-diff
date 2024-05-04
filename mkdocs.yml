@@ -94,5 +94,72 @@ markdown_extensions:
 
 nav:
   - Home: 'index.md'
-  - File: 'file/index.md'
-  - Job_orchestration: 'job_orchestration/index.md'
+  - File:
+    - 'file/index.md'
+    - Apache Avro:
+      - Apache Hudi: 'file/apache_avro/apache_hudi.md'
+      - Apache Iceberg: 'file/apache_avro/apache_iceberg.md'
+      - Apache ORC: 'file/apache_avro/apache_orc.md'
+      - Apache Parquet: 'file/apache_avro/apache_parquet.md'
+      - CSV: 'file/apache_avro/csv.md'
+      - Delta Lake: 'file/apache_avro/delta_lake.md'
+    - Apache Hudi:
+      - Apache Avro: 'file/apache_hudi/apache_avro.md'
+      - Apache Iceberg: 'file/apache_hudi/apache_iceberg.md'
+      - Apache ORC: 'file/apache_hudi/apache_orc.md'
+      - Apache Parquet: 'file/apache_hudi/apache_parquet.md'
+      - CSV: 'file/apache_hudi/csv.md'
+      - Delta Lake: 'file/apache_hudi/delta_lake.md'
+    - Apache Iceberg:
+      - Apache Avro: 'file/apache_iceberg/apache_avro.md'
+      - Apache Hudi: 'file/apache_iceberg/apache_hudi.md'
+      - Apache ORC: 'file/apache_iceberg/apache_orc.md'
+      - Apache Parquet: 'file/apache_iceberg/apache_parquet.md'
+      - CSV: 'file/apache_iceberg/csv.md'
+      - Delta Lake: 'file/apache_iceberg/delta_lake.md'
+    - Apache ORC:
+      - Apache Avro: 'file/apache_orc/apache_avro.md'
+      - Apache Hudi: 'file/apache_orc/apache_hudi.md'
+      - Apache Iceberg: 'file/apache_orc/apache_iceberg.md'
+      - Apache Parquet: 'file/apache_orc/apache_parquet.md'
+      - CSV: 'file/apache_orc/csv.md'
+      - Delta Lake: 'file/apache_orc/delta_lake.md'
+    - Apache Parquet:
+      - Apache Avro: 'file/apache_parquet/apache_avro.md'
+      - Apache Hudi: 'file/apache_parquet/apache_hudi.md'
+      - Apache Iceberg: 'file/apache_parquet/apache_iceberg.md'
+      - Apache ORC: 'file/apache_parquet/apache_orc.md'
+      - CSV: 'file/apache_parquet/csv.md'
+      - Delta Lake: 'file/apache_parquet/delta_lake.md'
+    - CSV:
+      - Apache Avro: 'file/csv/apache_avro.md'
+      - Apache Hudi: 'file/csv/apache_hudi.md'
+      - Apache Iceberg: 'file/csv/apache_iceberg.md'
+      - Apache ORC: 'file/csv/apache_orc.md'
+      - Apache Parquet: 'file/csv/apache_parquet.md'
+      - Delta Lake: 'file/csv/delta_lake.md'
+    - Delta Lake:
+      - Apache Avro: 'file/delta_lake/apache_avro.md'
+      - Apache Hudi: 'file/delta_lake/apache_hudi.md'
+      - Apache Iceberg: 'file/delta_lake/apache_iceberg.md'
+      - Apache ORC: 'file/delta_lake/apache_orc.md'
+      - Apache Parquet: 'file/delta_lake/apache_parquet.md'
+      - CSV: 'file/delta_lake/csv.md'
+  - Job orchestration:
+    - 'job_orchestration/index.md'
+    - Apache Airflow:
+      - Dagster: 'job_orchestration/apache_airflow/dagster.md'
+      - Mage: 'job_orchestration/apache_airflow/mage.md'
+      - Prefect: 'job_orchestration/apache_airflow/prefect.md'
+    - Dagster:
+      - Apache Airflow: 'job_orchestration/dagster/apache_airflow.md'
+      - Mage: 'job_orchestration/dagster/mage.md'
+      - Prefect: 'job_orchestration/dagster/prefect.md'
+    - Mage:
+      - Apache Airflow: 'job_orchestration/mage/apache_airflow.md'
+      - Dagster: 'job_orchestration/mage/dagster.md'
+      - Prefect: 'job_orchestration/mage/prefect.md'
+    - Prefect:
+      - Apache Airflow: 'job_orchestration/prefect/apache_airflow.md'
+      - Dagster: 'job_orchestration/prefect/dagster.md'
+      - Mage: 'job_orchestration/prefect/mage.md'
